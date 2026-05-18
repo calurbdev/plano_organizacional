@@ -643,6 +643,170 @@
   }
   .pai-tip strong { color: var(--amber); }
 
+  /* ========== RESPONSIVE — TABLET (≤768px) ========== */
+  @media (max-width: 768px) {
+    .cover {
+      padding: 48px 24px 40px;
+    }
+    .print-btn {
+      position: static;
+      margin-bottom: 20px;
+      display: inline-flex;
+    }
+    .cover h1 { font-size: 32px; }
+    .cover-stats { gap: 20px; }
+
+    .page-cover { padding: 36px 24px 28px; }
+    .page-cover h2 { font-size: 28px; }
+
+    .container { padding: 28px 20px 48px; }
+
+    .goal-box {
+      grid-template-columns: 1fr 1fr;
+      padding: 20px 20px;
+      gap: 16px;
+    }
+
+    .week-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .phase-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .tl-item {
+      grid-template-columns: 64px 20px 1fr;
+    }
+    .tl-time { font-size: 11px; }
+
+    .data-table th, .data-table td {
+      padding: 10px 12px;
+      font-size: 12px;
+    }
+
+    .subject-row {
+      flex-wrap: wrap;
+    }
+    .subject-row .tl-badge {
+      margin-top: 4px;
+    }
+  }
+
+  /* ========== RESPONSIVE — MOBILE (≤480px) ========== */
+  @media (max-width: 480px) {
+    .nav-inner {
+      padding: 0 8px;
+      gap: 0;
+    }
+    .nav-btn {
+      padding: 12px 10px;
+      font-size: 10px;
+      letter-spacing: 0.2px;
+    }
+
+    .cover {
+      padding: 32px 16px 28px;
+    }
+    .cover::before, .cover::after { display: none; }
+    .print-btn {
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .cover h1 { font-size: 26px; }
+    .cover-sub { font-size: 13px; }
+    .cover-stats {
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .cstat-val { font-size: 18px; }
+
+    .page-cover { padding: 28px 16px 20px; }
+    .page-cover h2 { font-size: 22px; }
+    .page-cover p { font-size: 13px; }
+
+    .container { padding: 20px 14px 40px; }
+
+    .section-title { font-size: 17px; }
+
+    .goal-box {
+      grid-template-columns: 1fr;
+      padding: 16px;
+      gap: 12px;
+    }
+
+    .week-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .exercise-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .phase-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tl-item {
+      grid-template-columns: 52px 18px 1fr;
+      gap: 0 8px;
+    }
+    .tl-time {
+      font-size: 10px;
+      padding-top: 12px;
+    }
+    .tl-card {
+      padding: 10px 12px;
+    }
+    .tl-card-title { font-size: 13px; }
+    .tl-card-desc { font-size: 11px; }
+
+    .subject-block-header { padding: 12px 14px; }
+    .subject-block-title { font-size: 14px; }
+    .subject-block-body { padding: 12px 14px; }
+    .subject-row { gap: 8px; }
+    .subject-name { font-size: 12px; }
+    .subject-detail { font-size: 11px; }
+
+    .phase-header { padding: 12px 14px; }
+    .phase-header h3 { font-size: 15px; }
+    .phase-body { padding: 12px 14px; }
+    .phase-category { padding: 10px 12px; }
+
+    .exercise-card-header {
+      flex-direction: column;
+      gap: 6px;
+    }
+    .exercise-card-title { font-size: 13px; }
+
+    .data-table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .alert-card { padding: 12px 14px; }
+    .alert-title { font-size: 12px; }
+    .alert-body { font-size: 11px; }
+
+    .info-card { padding: 14px; }
+    .info-card-title { font-size: 12px; }
+    .info-card-body { font-size: 11px; }
+
+    .divider { margin: 24px 0; }
+
+    .footer {
+      font-size: 11px;
+      padding: 16px;
+    }
+  }
+
   /* ========== PRINT ========== */
   @media print {
     .nav { display: none !important; }
@@ -2375,7 +2539,7 @@
   var elCover = document.getElementById('idade-cover');
   var elLabelCover = document.getElementById('idade-label-cover');
   if (elCover) elCover.textContent = textoIdade;
-  if (elLabelCover) elLabelCover.textContent = 'de vida do filho';
+  if (elLabelCover) elLabelCover.textContent = 'de vida de Davi';
 
   var elCard = document.getElementById('idade-card');
   if (elCard) elCard.textContent = textoIdade;
