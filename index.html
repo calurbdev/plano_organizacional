@@ -20,6 +20,10 @@
     --amber-light: #FAEEDA;
     --green: #3B6D11;
     --green-light: #EAF3DE;
+    --purple: #5B3FA6;
+    --purple-light: #EDE8FA;
+    --rose: #9E1D4E;
+    --rose-light: #FAE1EC;
     --gray-dark: #2C2C2A;
     --gray: #5F5E5A;
     --gray-light: #D3D1C7;
@@ -39,6 +43,59 @@
     min-height: 100vh;
   }
 
+  /* ========== NAV ========== */
+  .nav {
+    background: white;
+    border-bottom: 1px solid rgba(55,138,221,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(4,44,83,0.07);
+  }
+
+  .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+
+  .nav-btn {
+    white-space: nowrap;
+    padding: 14px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-btn:hover { color: var(--blue-mid); }
+
+  .nav-btn.active {
+    color: var(--navy);
+    border-bottom-color: var(--blue-mid);
+  }
+
+  /* ========== PAGES ========== */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ========== COVER ========== */
   .cover {
     background: linear-gradient(160deg, var(--navy) 0%, var(--blue-deep) 50%, var(--blue-mid) 100%);
     color: white;
@@ -97,24 +154,9 @@
     flex-wrap: wrap;
   }
 
-  .cstat {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
-
-  .cstat-val {
-    font-size: 22px;
-    font-weight: 600;
-    color: white;
-  }
-
-  .cstat-label {
-    font-size: 11px;
-    color: var(--blue-pale);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
+  .cstat { display: flex; flex-direction: column; gap: 2px; }
+  .cstat-val { font-size: 22px; font-weight: 600; color: white; }
+  .cstat-label { font-size: 11px; color: var(--blue-pale); letter-spacing: 1px; text-transform: uppercase; }
 
   .print-btn {
     position: absolute;
@@ -134,7 +176,6 @@
     gap: 8px;
     letter-spacing: 0.5px;
   }
-
   .print-btn:hover { background: rgba(255,255,255,0.22); }
   .print-btn svg { width: 15px; height: 15px; }
 
@@ -144,9 +185,7 @@
     padding: 40px 32px 64px;
   }
 
-  .section {
-    margin-bottom: 40px;
-  }
+  .section { margin-bottom: 40px; }
 
   .section-header {
     display: flex;
@@ -178,12 +217,8 @@
     margin-bottom: 4px;
   }
 
-  /* TIMELINE */
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
+  /* ========== TIMELINE ========== */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
 
   .tl-item {
     display: grid;
@@ -201,11 +236,7 @@
     letter-spacing: 0.5px;
   }
 
-  .tl-spine {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+  .tl-spine { display: flex; flex-direction: column; align-items: center; }
 
   .tl-dot {
     width: 12px; height: 12px;
@@ -215,57 +246,27 @@
     margin-top: 16px;
     flex-shrink: 0;
   }
-
   .tl-dot.filled { background: var(--blue-mid); }
   .tl-dot.priority { border-color: var(--teal); background: var(--teal); }
   .tl-dot.sacred { border-color: var(--amber); background: var(--amber); }
 
-  .tl-line {
-    width: 2px;
-    flex: 1;
-    min-height: 16px;
-    background: var(--blue-ghost);
-  }
+  .tl-line { width: 2px; flex: 1; min-height: 16px; background: var(--blue-ghost); }
 
   .tl-card {
     background: white;
     border-radius: 12px;
-    border: 1px solid rgba(55, 138, 221, 0.12);
+    border: 1px solid rgba(55,138,221,0.12);
     padding: 12px 16px;
     margin-bottom: 8px;
     position: relative;
   }
+  .tl-card.highlight { border-color: rgba(29,158,117,0.25); background: var(--teal-light); }
+  .tl-card.sacred-card { border-color: rgba(186,117,23,0.25); background: var(--amber-light); }
+  .tl-card.study { border-left: 3px solid var(--blue-mid); }
+  .tl-card.rest { border-left: 3px solid var(--blue-light); }
 
-  .tl-card.highlight {
-    border-color: rgba(29, 158, 117, 0.25);
-    background: var(--teal-light);
-  }
-
-  .tl-card.sacred-card {
-    border-color: rgba(186, 117, 23, 0.25);
-    background: var(--amber-light);
-  }
-
-  .tl-card.study {
-    border-left: 3px solid var(--blue-mid);
-  }
-
-  .tl-card.rest {
-    border-left: 3px solid var(--blue-light);
-  }
-
-  .tl-card-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 2px;
-  }
-
-  .tl-card-desc {
-    font-size: 12px;
-    color: var(--gray);
-    line-height: 1.5;
-  }
+  .tl-card-title { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .tl-card-desc { font-size: 12px; color: var(--gray); line-height: 1.5; }
 
   .tl-badge {
     display: inline-block;
@@ -277,14 +278,15 @@
     border-radius: 20px;
     margin-top: 6px;
   }
-
   .badge-blue { background: var(--blue-ghost); color: var(--blue-deep); }
   .badge-teal { background: var(--teal-light); color: var(--teal); }
   .badge-amber { background: var(--amber-light); color: var(--amber); }
   .badge-green { background: var(--green-light); color: var(--green); }
   .badge-gray { background: var(--gray-ghost); color: var(--gray); }
+  .badge-purple { background: var(--purple-light); color: var(--purple); }
+  .badge-rose { background: var(--rose-light); color: var(--rose); }
 
-  /* CARDS GRID */
+  /* ========== CARDS GRID ========== */
   .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -294,38 +296,22 @@
   .info-card {
     background: white;
     border-radius: 12px;
-    border: 1px solid rgba(55, 138, 221, 0.12);
+    border: 1px solid rgba(55,138,221,0.12);
     padding: 18px;
   }
+  .info-card-icon { font-size: 22px; margin-bottom: 10px; }
+  .info-card-title { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .info-card-body { font-size: 12px; color: var(--gray); line-height: 1.55; }
 
-  .info-card-icon {
-    font-size: 22px;
-    margin-bottom: 10px;
-  }
-
-  .info-card-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 4px;
-  }
-
-  .info-card-body {
-    font-size: 12px;
-    color: var(--gray);
-    line-height: 1.55;
-  }
-
-  /* TABLE */
+  /* ========== TABLE ========== */
   .data-table {
     width: 100%;
     border-collapse: collapse;
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    border: 1px solid rgba(55, 138, 221, 0.12);
+    border: 1px solid rgba(55,138,221,0.12);
   }
-
   .data-table th {
     background: var(--navy);
     color: var(--blue-pale);
@@ -336,20 +322,17 @@
     padding: 12px 16px;
     text-align: left;
   }
-
   .data-table td {
     padding: 11px 16px;
     font-size: 13px;
     color: var(--gray-dark);
-    border-bottom: 1px solid rgba(55, 138, 221, 0.07);
+    border-bottom: 1px solid rgba(55,138,221,0.07);
   }
-
   .data-table tr:last-child td { border-bottom: none; }
   .data-table tr:hover td { background: var(--blue-ghost); }
-
   .data-table td:first-child { font-weight: 600; color: var(--navy); }
 
-  /* GOAL BOX */
+  /* ========== GOAL BOX ========== */
   .goal-box {
     background: var(--navy);
     border-radius: 14px;
@@ -360,7 +343,6 @@
     gap: 24px;
     margin-bottom: 14px;
   }
-
   .goal-item-title {
     font-size: 11px;
     letter-spacing: 2px;
@@ -369,7 +351,6 @@
     margin-bottom: 6px;
     font-weight: 600;
   }
-
   .goal-item-val {
     font-family: 'Playfair Display', serif;
     font-size: 18px;
@@ -377,27 +358,21 @@
     line-height: 1.3;
   }
 
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid rgba(55, 138, 221, 0.15);
-    margin: 36px 0;
-  }
+  /* ========== DIVIDER ========== */
+  .divider { border: none; border-top: 1px solid rgba(55,138,221,0.15); margin: 36px 0; }
 
-  /* WEEK GRID */
+  /* ========== WEEK GRID ========== */
   .week-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
   }
-
   .day-card {
     background: white;
     border-radius: 10px;
-    border: 1px solid rgba(55, 138, 221, 0.12);
+    border: 1px solid rgba(55,138,221,0.12);
     padding: 14px 12px;
   }
-
   .day-name {
     font-size: 11px;
     font-weight: 700;
@@ -406,7 +381,6 @@
     color: var(--blue-mid);
     margin-bottom: 10px;
   }
-
   .day-pill {
     display: block;
     font-size: 11px;
@@ -418,38 +392,23 @@
     font-weight: 500;
     line-height: 1.4;
   }
-
   .day-pill.green { background: var(--green-light); color: var(--green); }
   .day-pill.teal { background: var(--teal-light); color: var(--teal); }
   .day-pill.amber { background: var(--amber-light); color: var(--amber); }
+  .day-pill.purple { background: var(--purple-light); color: var(--purple); }
+  .day-pill.rose { background: var(--rose-light); color: var(--rose); }
 
-  /* PROGRESS BARS */
+  /* ========== PROGRESS BARS ========== */
   .progress-list { display: flex; flex-direction: column; gap: 14px; }
-
-  .prog-item {}
-  .prog-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 6px;
-  }
+  .prog-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
   .prog-label { font-size: 13px; font-weight: 600; color: var(--navy); }
   .prog-pct { font-size: 12px; color: var(--blue); font-weight: 600; }
-  .prog-bar-bg {
-    background: var(--blue-ghost);
-    border-radius: 100px;
-    height: 7px;
-    overflow: hidden;
-  }
-  .prog-bar-fill {
-    height: 100%;
-    border-radius: 100px;
-    background: var(--blue-mid);
-    transition: width 0.3s;
-  }
+  .prog-bar-bg { background: var(--blue-ghost); border-radius: 100px; height: 7px; overflow: hidden; }
+  .prog-bar-fill { height: 100%; border-radius: 100px; background: var(--blue-mid); }
   .prog-bar-fill.teal { background: var(--teal); }
   .prog-bar-fill.amber { background: var(--amber); }
 
-  /* FOOTER */
+  /* ========== FOOTER ========== */
   .footer {
     text-align: center;
     font-size: 12px;
@@ -459,25 +418,271 @@
     background: white;
   }
 
-  /* PRINT */
+  /* ========== PAGE COVERS ========== */
+  .page-cover {
+    padding: 48px 48px 40px;
+    position: relative;
+    overflow: hidden;
+    color: white;
+  }
+  .page-cover.study-cover {
+    background: linear-gradient(160deg, #042C53 0%, #0C447C 50%, #185FA5 100%);
+  }
+  .page-cover.baby-cover {
+    background: linear-gradient(160deg, #0A4A32 0%, #1D7A56 50%, #1D9E75 100%);
+  }
+  .page-cover.exercise-cover {
+    background: linear-gradient(160deg, #3B1A7A 0%, #5B3FA6 50%, #7B5FC6 100%);
+  }
+  .page-cover h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .page-cover p {
+    font-size: 14px;
+    opacity: 0.8;
+    max-width: 500px;
+    margin-bottom: 0;
+  }
+
+  /* ========== EXERCISE CARDS ========== */
+  .exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+  }
+
+  .exercise-card {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(55,138,221,0.12);
+    overflow: hidden;
+  }
+  .exercise-card-header {
+    padding: 14px 18px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(55,138,221,0.08);
+  }
+  .exercise-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .exercise-card-body {
+    padding: 12px 18px 16px;
+  }
+  .exercise-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .exercise-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .exercise-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+  .exercise-steps {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .exercise-step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 12px;
+    color: var(--gray-dark);
+  }
+  .step-num {
+    min-width: 20px;
+    height: 20px;
+    background: var(--blue-ghost);
+    color: var(--blue-deep);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ========== ALERT / PLAN B CARDS ========== */
+  .alert-card {
+    background: white;
+    border-radius: 12px;
+    border-left: 4px solid var(--amber);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+  .alert-card.green-alert { border-left-color: var(--teal); }
+  .alert-card.blue-alert { border-left-color: var(--blue-mid); }
+  .alert-card.purple-alert { border-left-color: var(--purple); }
+  .alert-title { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .alert-body { font-size: 12px; color: var(--gray); line-height: 1.55; }
+
+  /* ========== STUDY PLAN ========== */
+  .subject-block {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(55,138,221,0.12);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .subject-block-header {
+    background: var(--navy);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .subject-block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: white;
+  }
+  .subject-block-body { padding: 16px 20px; }
+  .subject-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(55,138,221,0.07);
+  }
+  .subject-row:last-child { border-bottom: none; }
+  .subject-icon { font-size: 18px; flex-shrink: 0; width: 28px; }
+  .subject-content { flex: 1; }
+  .subject-name { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+  .subject-detail { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+  /* ========== BABY PHASE CARDS ========== */
+  .phase-block {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid rgba(29,158,117,0.15);
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .phase-header {
+    background: linear-gradient(135deg, var(--teal), #1D7A56);
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .phase-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: white;
+  }
+  .phase-badge {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .phase-body { padding: 16px 20px; }
+  .phase-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .phase-category {
+    background: var(--gray-ghost);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .phase-cat-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .phase-cat-title.motor { color: var(--blue-mid); }
+  .phase-cat-title.cog { color: var(--purple); }
+  .phase-cat-title.social { color: var(--teal); }
+  .phase-activity {
+    font-size: 11px;
+    color: var(--gray-dark);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    margin-bottom: 5px;
+    line-height: 1.45;
+  }
+  .phase-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+  .phase-dot.motor { background: var(--blue-mid); }
+  .phase-dot.cog { background: var(--purple); }
+  .phase-dot.social { background: var(--teal); }
+
+  .pai-tip {
+    background: var(--amber-light);
+    border-radius: 10px;
+    border-left: 3px solid var(--amber);
+    padding: 12px 16px;
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--gray-dark);
+    line-height: 1.55;
+  }
+  .pai-tip strong { color: var(--amber); }
+
+  /* ========== PRINT ========== */
   @media print {
+    .nav { display: none !important; }
+    .page { display: block !important; }
+    .page-break-before { page-break-before: always; }
     body { background: white; }
-    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .print-btn { display: none !important; }
+    .cover, .page-cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-btn, .pdf-btn { display: none !important; }
     .goal-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .data-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .tl-card.highlight, .tl-card.sacred-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .tl-badge, .badge-blue, .badge-teal, .badge-amber, .badge-green, .badge-gray {
-      -webkit-print-color-adjust: exact; print-color-adjust: exact;
-    }
+    .tl-badge, .badge-blue, .badge-teal, .badge-amber, .badge-green, .badge-gray,
+    .badge-purple, .badge-rose { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .day-pill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .prog-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     .section { page-break-inside: avoid; }
     .container { padding: 24px; }
+    .phase-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .subject-block-header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .exercise-cover, .study-cover, .baby-cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 </style>
 </head>
 <body>
+
+<!-- ========== NAVIGATION ========== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showPage('rotina')">🏠 Rotina Diária</button>
+    <button class="nav-btn" onclick="showPage('concurso')">📚 Plano Concurso</button>
+    <button class="nav-btn" onclick="showPage('bebe')">👶 Estimulação Bebê</button>
+    <button class="nav-btn" onclick="showPage('treino')">💪 Exercícios</button>
+  </div>
+</nav>
+
+
+<!-- ========================================================================================
+     PÁGINA 1 — ROTINA DIÁRIA (original)
+======================================================================================== -->
+<div id="page-rotina" class="page active">
 
 <div class="cover">
   <button class="print-btn" onclick="window.print()">
@@ -490,24 +695,24 @@
 
   <div class="cover-eyebrow">Plano Organizacional Pessoal</div>
   <h1>Rotina de Alta<br>Performance</h1>
-  <p class="cover-sub">Construída para equilibrar concurso público, paternidade presente, saúde e espiritualidade — com foco e intenção em cada hora do dia.</p>
+  <div class="cover-sub">Concurso público · Paternidade · Jiu-jitsu · Fé · Família</div>
 
   <div class="cover-stats">
     <div class="cstat">
-      <span class="cstat-val">5 anos</span>
-      <span class="cstat-label">Meta concurso</span>
+      <div class="cstat-val" id="idade-cover">—</div>
+      <div class="cstat-label" id="idade-label-cover">do filho</div>
     </div>
     <div class="cstat">
-      <span class="cstat-val">-9 kg</span>
-      <span class="cstat-label">Meta de peso</span>
+      <div class="cstat-val">4h+</div>
+      <div class="cstat-label">Estudo / dia</div>
     </div>
     <div class="cstat">
-      <span class="cstat-val" id="idade-cover">—</span>
-      <span class="cstat-label" id="idade-label-cover">Idade do filho</span>
+      <div class="cstat-val">40 min</div>
+      <div class="cstat-label">Treino / dia</div>
     </div>
     <div class="cstat">
-      <span class="cstat-val">~6h/dia</span>
-      <span class="cstat-label">Horas livres (útil)</span>
+      <div class="cstat-val">74→65 kg</div>
+      <div class="cstat-label">Meta de peso</div>
     </div>
   </div>
 </div>
@@ -517,10 +722,10 @@
   <!-- PREMISSAS -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background:var(--blue-ghost);">📌</div>
+      <div class="section-icon" style="background:var(--blue-ghost);">⚙️</div>
       <div>
-        <div class="section-num">01 — Contexto</div>
-        <div class="section-title">Premissas da sua rotina</div>
+        <div class="section-num">01 — Premissas</div>
+        <div class="section-title">Condições da rotina</div>
       </div>
     </div>
 
@@ -565,181 +770,151 @@
       <div class="tl-item">
         <div class="tl-time">05:00</div>
         <div class="tl-spine"><div class="tl-dot sacred"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card sacred-card">
-            <div class="tl-card-title">🙏 Momento com Deus</div>
-            <div class="tl-card-desc">15 min de oração, leitura bíblica ou reflexão. Dia começa com intenção e gratidão antes de qualquer outra coisa.</div>
-            <span class="tl-badge badge-amber">Sagrado · 15 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card sacred-card">
+          <div class="tl-card-title">🙏 Momento com Deus</div>
+          <div class="tl-card-desc">15 min de oração, leitura bíblica ou reflexão. Dia começa com intenção e gratidão antes de qualquer outra coisa.</div>
+          <span class="tl-badge badge-amber">Sagrado · 15 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">05:15</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card">
-            <div class="tl-card-title">🏃 Preparação + Higiene + Café</div>
-            <div class="tl-card-desc">Banho, café da manhã rápido e nutritivo (foco em proteína para treino). Preparo para o trabalho. Pode aproveitar para checar algum flashcard de concurso.</div>
-            <span class="tl-badge badge-gray">30 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card">
+          <div class="tl-card-title">🏃 Preparação + Higiene + Café</div>
+          <div class="tl-card-desc">Banho, café da manhã rápido e nutritivo (foco em proteína para treino). Preparo para o trabalho. Pode aproveitar para checar algum flashcard de concurso.</div>
+          <span class="tl-badge badge-gray">30 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">05:45</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card study">
-            <div class="tl-card-title">📖 Estudo no trajeto (ida)</div>
-            <div class="tl-card-desc">40 min usando áudio, podcast do concurso, resumos gravados ou flashcards. Transporte vira sala de aula. Aproveite esse tempo 100%.</div>
-            <span class="tl-badge badge-blue">Concurso · 40 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card study">
+          <div class="tl-card-title">📖 Estudo no trajeto (ida)</div>
+          <div class="tl-card-desc">40 min usando áudio, podcast do concurso, resumos gravados ou flashcards. Transporte vira sala de aula. Aproveite esse tempo 100%.</div>
+          <span class="tl-badge badge-blue">Concurso · 40 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">07:00</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card">
-            <div class="tl-card-title">💼 Trabalho</div>
-            <div class="tl-card-desc">Foco total no trabalho. Entrega com qualidade, sem distrações. Não misture estudo de concurso com hora de trabalho — respeite cada espaço.</div>
-            <span class="tl-badge badge-gray">6h — até 13:00</span>
-          </div>
-        </div>
+        <div><div class="tl-card">
+          <div class="tl-card-title">💼 Trabalho</div>
+          <div class="tl-card-desc">Foco total no trabalho. Entrega com qualidade, sem distrações. Não misture estudo de concurso com hora de trabalho — respeite cada espaço.</div>
+          <span class="tl-badge badge-gray">6h — até 13:00</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">13:00</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card study">
-            <div class="tl-card-title">📖 Estudo no trajeto (volta)</div>
-            <div class="tl-card-desc">Mais 40 min de material do concurso. Total de 1h20 de estudo no transporte por dia = quase 9h semanais apenas no deslocamento!</div>
-            <span class="tl-badge badge-blue">Concurso · 40 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card study">
+          <div class="tl-card-title">📖 Estudo no trajeto (volta)</div>
+          <div class="tl-card-desc">Mais 40 min de material do concurso. Total de 1h20 de estudo no transporte por dia = quase 9h semanais apenas no deslocamento!</div>
+          <span class="tl-badge badge-blue">Concurso · 40 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">13:40</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card">
-            <div class="tl-card-title">🍽 Almoço + Descanso curto</div>
-            <div class="tl-card-desc">Almoço balanceado (proteínas, vegetais, carboidrato moderado). 10 min de descanso visual/mental após comer. Não pule refeições — afeta energia e foco.</div>
-            <span class="tl-badge badge-gray">40 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card">
+          <div class="tl-card-title">🍽 Almoço + Descanso curto</div>
+          <div class="tl-card-desc">Almoço balanceado (proteínas, vegetais, carboidrato moderado). 10 min de descanso visual/mental após comer. Não pule refeições — afeta energia e foco.</div>
+          <span class="tl-badge badge-gray">40 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">14:20</div>
         <div class="tl-spine"><div class="tl-dot priority"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card highlight">
-            <div class="tl-card-title">👶 Tempo de qualidade com o filho</div>
-            <div class="tl-card-desc">Momento insubstituível. Interação, contato visual, leitura bíblica em voz alta, exercícios de desenvolvimento (QI/QE/coordenação). Sua presença agora forma o cérebro dele.</div>
-            <span class="tl-badge badge-teal">Prioridade máxima · 50 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card highlight">
+          <div class="tl-card-title">👶 Tempo de qualidade com o filho</div>
+          <div class="tl-card-desc">Momento insubstituível. Interação, contato visual, leitura bíblica em voz alta, exercícios de desenvolvimento (QI/QE/coordenação). Sua presença agora forma o cérebro dele.</div>
+          <span class="tl-badge badge-teal">Prioridade máxima · 50 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">15:10</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card study">
-            <div class="tl-card-title">📚 Bloco de estudo — Concurso</div>
-            <div class="tl-card-desc">Estudo concentrado com técnica Pomodoro (25 min estudo + 5 min pausa). Foco em matérias do edital, cursos ativos, resolução de questões e revisão. Celular no silencioso.</div>
-            <span class="tl-badge badge-blue">Concurso · 1h30</span>
-          </div>
-        </div>
+        <div><div class="tl-card study">
+          <div class="tl-card-title">📚 Bloco de estudo — Concurso</div>
+          <div class="tl-card-desc">Estudo concentrado com técnica Pomodoro (25 min estudo + 5 min pausa). Foco em matérias do edital, cursos ativos, resolução de questões e revisão. Celular no silencioso.</div>
+          <span class="tl-badge badge-blue">Concurso · 1h30</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">16:40</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card">
-            <div class="tl-card-title">💪 Treino físico — Abdômen + Jiu-jitsu</div>
-            <div class="tl-card-desc">Treino em casa focado em core e técnicas de jiu-jitsu. Inclui aquecimento, circuito abdominal, drills técnicos e alongamento. Consistência aqui = 65 kg em até 12 meses.</div>
-            <span class="tl-badge badge-green">Fitness · 40 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card">
+          <div class="tl-card-title">💪 Treino físico — Abdômen + Jiu-jitsu</div>
+          <div class="tl-card-desc">Treino em casa focado em core e técnicas de jiu-jitsu. Inclui aquecimento, circuito abdominal, drills técnicos e alongamento. Consistência aqui = 65 kg em até 12 meses.</div>
+          <span class="tl-badge badge-green">Fitness · 40 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">17:20</div>
         <div class="tl-spine"><div class="tl-dot priority"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card highlight">
-            <div class="tl-card-title">👶 Segundo bloco com o filho + esposa</div>
-            <div class="tl-card-desc">Apoio à esposa, troca, banho do bebê (se horário), leitura e estimulação. Momento de família. Essencial para o vínculo e para aliviar a carga da mãe que está em recuperação.</div>
-            <span class="tl-badge badge-teal">Família · 50 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card highlight">
+          <div class="tl-card-title">👶 Segundo bloco com o filho + esposa</div>
+          <div class="tl-card-desc">Apoio à esposa, troca, banho do bebê (se horário), leitura e estimulação. Momento de família. Essencial para o vínculo e para aliviar a carga da mãe que está em recuperação.</div>
+          <span class="tl-badge badge-teal">Família · 50 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">18:10</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card study">
-            <div class="tl-card-title">📚 Bloco 2 de estudo — Cursos ativos</div>
-            <div class="tl-card-desc">Foco nos dois cursos de 3 meses já em andamento. Aulas, exercícios, anotações. Dividir o tempo entre os dois cursos conforme a urgência das entregas.</div>
-            <span class="tl-badge badge-blue">Cursos · 1h</span>
-          </div>
-        </div>
+        <div><div class="tl-card study">
+          <div class="tl-card-title">📚 Bloco 2 de estudo — Cursos ativos</div>
+          <div class="tl-card-desc">Foco nos dois cursos de 3 meses já em andamento. Aulas, exercícios, anotações. Dividir o tempo entre os dois cursos conforme a urgência das entregas.</div>
+          <span class="tl-badge badge-blue">Cursos · 1h</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">19:10</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card">
-            <div class="tl-card-title">🍽 Jantar + Conversa com a esposa</div>
-            <div class="tl-card-desc">Jantar leve (evitar pesado à noite para qualidade de sono e perda de peso). Momento de conexão com a esposa. Pergunta como ela está — ela também precisa de suporte.</div>
-            <span class="tl-badge badge-gray">40 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card">
+          <div class="tl-card-title">🍽 Jantar + Conversa com a esposa</div>
+          <div class="tl-card-desc">Jantar leve (evitar pesado à noite para qualidade de sono e perda de peso). Momento de conexão com a esposa. Pergunta como ela está — ela também precisa de suporte.</div>
+          <span class="tl-badge badge-gray">40 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">19:50</div>
         <div class="tl-spine"><div class="tl-dot sacred"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card sacred-card">
-            <div class="tl-card-title">📖 Leitura bíblica em família</div>
-            <div class="tl-card-desc">Ler a Bíblia em voz alta para o bebê e a esposa. Voz do pai tem poder de vínculo nos primeiros meses. Um hábito que vai durar a vida toda.</div>
-            <span class="tl-badge badge-amber">Espiritual · 15 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card sacred-card">
+          <div class="tl-card-title">📖 Leitura bíblica em família</div>
+          <div class="tl-card-desc">Ler a Bíblia em voz alta para o bebê e a esposa. Voz do pai tem poder de vínculo nos primeiros meses. Um hábito que vai durar a vida toda.</div>
+          <span class="tl-badge badge-amber">Espiritual · 15 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">20:05</div>
         <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
-        <div>
-          <div class="tl-card rest">
-            <div class="tl-card-title">🌙 Descompressão + Preparo para dormir</div>
-            <div class="tl-card-desc">Sem telas após 20h. Higiene, revisar lista do dia seguinte (5 min), exercício de respiração ou gratidão. Preparar ambiente para sono de qualidade.</div>
-            <span class="tl-badge badge-gray">55 min</span>
-          </div>
-        </div>
+        <div><div class="tl-card rest">
+          <div class="tl-card-title">🌙 Descompressão + Preparo para dormir</div>
+          <div class="tl-card-desc">Sem telas após 20h. Higiene, revisar lista do dia seguinte (5 min), exercício de respiração ou gratidão. Preparar ambiente para sono de qualidade.</div>
+          <span class="tl-badge badge-gray">55 min</span>
+        </div></div>
       </div>
 
       <div class="tl-item">
         <div class="tl-time">21:00</div>
         <div class="tl-spine"><div class="tl-dot filled"></div></div>
-        <div>
-          <div class="tl-card rest">
-            <div class="tl-card-title">😴 Dormir</div>
-            <div class="tl-card-desc">8h de sono programado. Com o bebê acordando à noite para mamar, preserve ao máximo a qualidade. A recuperação é quando o cérebro consolida o que estudou.</div>
-            <span class="tl-badge badge-gray">Meta: 8h</span>
-          </div>
-        </div>
+        <div><div class="tl-card rest">
+          <div class="tl-card-title">😴 Dormir</div>
+          <div class="tl-card-desc">8h de sono programado. Com o bebê acordando à noite para mamar, preserve ao máximo a qualidade. A recuperação é quando o cérebro consolida o que estudou.</div>
+          <span class="tl-badge badge-gray">Meta: 8h</span>
+        </div></div>
       </div>
 
     </div>
@@ -801,7 +976,6 @@
         <div class="section-title">Rotina do fim de semana</div>
       </div>
     </div>
-
     <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
       <div class="info-card">
         <div class="info-card-title">🗓 Sábado</div>
@@ -847,7 +1021,7 @@
         <tr>
           <td>0–3 meses (agora)</td>
           <td>Contato visual, voz do pai, seguir luz/objeto, tato suave</td>
-          <td>Fale sempre, leia em voz alta, segure o rostopertinho, música calma</td>
+          <td>Fale sempre, leia em voz alta, segure o rosto pertinho, música calma</td>
         </tr>
         <tr>
           <td>3–6 meses</td>
@@ -884,7 +1058,6 @@
         <div class="section-title">Objetivos e indicadores</div>
       </div>
     </div>
-
     <div class="goal-box">
       <div>
         <div class="goal-item-title">Meta principal</div>
@@ -903,7 +1076,6 @@
         <div class="goal-item-val">Estar presente nos momentos de desenvolvimento do filho todos os dias</div>
       </div>
     </div>
-
     <div class="progress-list">
       <div class="prog-item">
         <div class="prog-header">
@@ -940,7 +1112,6 @@
         <div class="section-title">Regras de ouro da rotina</div>
       </div>
     </div>
-
     <div class="cards-grid">
       <div class="info-card">
         <div class="info-card-icon">🍼</div>
@@ -965,15 +1136,1222 @@
     </div>
   </div>
 
-</div>
+</div><!-- /container -->
 
 <div class="footer">
   Plano gerado com foco em equilíbrio real — concurso, filho, saúde e fé. Revise mensalmente conforme o bebê cresce.
 </div>
+</div><!-- /page-rotina -->
+
+
+<!-- ========================================================================================
+     PÁGINA 2 — PLANO CONCURSO
+======================================================================================== -->
+<div id="page-concurso" class="page">
+
+<div class="page-cover study-cover">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Gerar PDF / Imprimir
+  </button>
+  <div class="cover-eyebrow">Planejamento de Estudos</div>
+  <h2>Plano Completo para<br>o Concurso Público</h2>
+  <p>Como estudar com inteligência, o que priorizar e o que fazer quando o bebê desregula tudo</p>
+</div>
+
+<div class="container">
+
+  <!-- MÉTODO DE ESTUDO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">🧠</div>
+      <div>
+        <div class="section-num">01 — Método</div>
+        <div class="section-title">Como estudar para concurso do zero</div>
+      </div>
+    </div>
+
+    <div class="cards-grid" style="margin-bottom:16px;">
+      <div class="info-card" style="border-top:3px solid var(--blue-mid);">
+        <div class="info-card-icon">1️⃣</div>
+        <div class="info-card-title">Conheça o Edital</div>
+        <div class="info-card-body">O edital é a Bíblia do concurso. Leia todo o conteúdo programático, veja o peso de cada disciplina e o número de questões por matéria. Priorize sempre as matérias de maior peso.</div>
+      </div>
+      <div class="info-card" style="border-top:3px solid var(--teal);">
+        <div class="info-card-icon">2️⃣</div>
+        <div class="info-card-title">Fase Base (1–6 meses)</div>
+        <div class="info-card-body">Estude os fundamentos de cada matéria. Não tente decorar — entenda os princípios. Use videoaulas de qualidade para construir a base teórica sólida.</div>
+      </div>
+      <div class="info-card" style="border-top:3px solid var(--amber);">
+        <div class="info-card-icon">3️⃣</div>
+        <div class="info-card-title">Fase de Questões (6–18 meses)</div>
+        <div class="info-card-body">Resolva questões de provas anteriores por assunto. Isso treina o raciocínio da banca, identifica pontos fracos e solidifica o aprendizado real.</div>
+      </div>
+      <div class="info-card" style="border-top:3px solid var(--green);">
+        <div class="info-card-icon">4️⃣</div>
+        <div class="info-card-title">Fase de Revisão (contínuo)</div>
+        <div class="info-card-body">Revisão é o que faz você não esquecer. Use flashcards (Anki), mapas mentais e revisões semanais. Matéria revista é matéria garantida na prova.</div>
+      </div>
+    </div>
+
+    <div class="info-card" style="background:var(--navy); border:none;">
+      <div style="color:white;">
+        <div style="font-size:13px; font-weight:700; margin-bottom:8px; color:var(--blue-pale);">⚡ REGRA DE OURO DO MÉTODO</div>
+        <div style="font-size:13px; line-height:1.65; color:rgba(255,255,255,0.85);">
+          <strong style="color:white;">Teoria → Questões → Revisão → Questões novamente.</strong> Nunca fique só na teoria. Nunca fique só em questões sem revisar. O ciclo completo é o que aprova. Com bebê em casa, prefira sessões curtas (30–45 min) e muito frequentes a sessões longas e raras.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- O QUE ESTUDAR -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">📋</div>
+      <div>
+        <div class="section-num">02 — Conteúdo</div>
+        <div class="section-title">O que estudar — disciplinas essenciais</div>
+      </div>
+    </div>
+
+    <div class="subject-block">
+      <div class="subject-block-header">
+        <div class="subject-block-title">📐 Raciocínio Lógico e Matemática</div>
+        <span class="tl-badge badge-blue" style="font-size:10px;">Alta incidência</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🔢</div>
+          <div class="subject-content">
+            <div class="subject-name">Lógica proposicional</div>
+            <div class="subject-detail">Conectivos lógicos, tabela verdade, equivalências. Base de tudo — domine antes de avançar.</div>
+          </div>
+          <span class="tl-badge badge-blue">Prioritário</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">📊</div>
+          <div class="subject-content">
+            <div class="subject-name">Sequências e padrões</div>
+            <div class="subject-detail">Progressões aritméticas e geométricas, sequências numéricas, problemas de raciocínio.</div>
+          </div>
+          <span class="tl-badge badge-blue">Médio</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">📐</div>
+          <div class="subject-content">
+            <div class="subject-name">Geometria básica e porcentagem</div>
+            <div class="subject-detail">Áreas, volumes básicos, porcentagem, regra de três simples e composta, juros.</div>
+          </div>
+          <span class="tl-badge badge-amber">Recorrente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subject-block">
+      <div class="subject-block-header">
+        <div class="subject-block-title">📝 Língua Portuguesa</div>
+        <span class="tl-badge badge-teal" style="font-size:10px;">Sempre cai</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">📖</div>
+          <div class="subject-content">
+            <div class="subject-name">Interpretação de texto</div>
+            <div class="subject-detail">A maior parte da prova. Aprenda a encontrar a ideia central, inferências e o que o autor quis dizer. Pratique diariamente.</div>
+          </div>
+          <span class="tl-badge badge-blue">Prioritário</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">✍️</div>
+          <div class="subject-content">
+            <div class="subject-name">Gramática: concordância e regência</div>
+            <div class="subject-detail">Concordância verbal e nominal, regência verbal, crase. São os tópicos mais cobrados em gramática.</div>
+          </div>
+          <span class="tl-badge badge-blue">Prioritário</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔤</div>
+          <div class="subject-content">
+            <div class="subject-name">Ortografia e pontuação</div>
+            <div class="subject-detail">Novo acordo ortográfico, uso da vírgula, ponto e vírgula. Erros frequentes em prova.</div>
+          </div>
+          <span class="tl-badge badge-amber">Recorrente</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subject-block">
+      <div class="subject-block-header">
+        <div class="subject-block-title">⚖️ Direito e Legislação</div>
+        <span class="tl-badge badge-amber" style="font-size:10px;">Depende do cargo</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🏛️</div>
+          <div class="subject-content">
+            <div class="subject-name">Direito Constitucional</div>
+            <div class="subject-detail">Direitos fundamentais, organização do Estado, poder legislativo/executivo/judiciário. Quase todos os concursos cobram.</div>
+          </div>
+          <span class="tl-badge badge-blue">Prioritário</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">📋</div>
+          <div class="subject-content">
+            <div class="subject-name">Direito Administrativo</div>
+            <div class="subject-detail">Atos administrativos, licitação (Lei 14.133), concursos públicos, agentes públicos, improbidade.</div>
+          </div>
+          <span class="tl-badge badge-blue">Prioritário</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">📄</div>
+          <div class="subject-content">
+            <div class="subject-name">Legislação específica do cargo</div>
+            <div class="subject-detail">Cada concurso tem sua lei específica. Estude a lei seca do cargo desejado linha por linha.</div>
+          </div>
+          <span class="tl-badge badge-amber">Específico</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="subject-block">
+      <div class="subject-block-header">
+        <div class="subject-block-title">💻 Conhecimentos Gerais e Informática</div>
+        <span class="tl-badge badge-gray" style="font-size:10px;">Complementar</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🌍</div>
+          <div class="subject-content">
+            <div class="subject-name">Atualidades</div>
+            <div class="subject-detail">Leia diariamente um jornal ou site de notícias. Foque em política, economia, saúde e meio ambiente. 15 min/dia resolve.</div>
+          </div>
+          <span class="tl-badge badge-gray">15 min/dia</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">💻</div>
+          <div class="subject-content">
+            <div class="subject-name">Informática básica</div>
+            <div class="subject-detail">Word, Excel, Windows, redes, segurança da informação e conceitos de internet. Provas cobram itens bem específicos — estude pelos gabaritos de provas anteriores.</div>
+          </div>
+          <span class="tl-badge badge-amber">Médio</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- COMO ESTUDAR COM BEBÊ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--amber-light);">🍼</div>
+      <div>
+        <div class="section-num">03 — Bebê + Concurso</div>
+        <div class="section-title">Plano B para dias de caos total</div>
+      </div>
+    </div>
+
+    <div class="info-card" style="background:var(--amber-light); border-color:rgba(186,117,23,0.2); margin-bottom:16px;">
+      <div class="info-card-title" style="color:var(--amber);">⚠️ Realidade: bebê vai desregular tudo</div>
+      <div class="info-card-body" style="margin-top:6px;">Algumas noites serão de 2–3 horas de sono. Alguns dias o bebê vai chorar sem parar. Vai ter crise de cólica, vacina, consulta de emergência. Isso é normal e temporário. O segredo não é resistir — é ter um plano adaptado para cada nível de caos.</div>
+    </div>
+
+    <div class="alert-card blue-alert">
+      <div class="alert-title">🟢 DIA NORMAL — rotina completa</div>
+      <div class="alert-body">Bebê dormiu razoavelmente. Siga o plano original. Pomodoro de 25 min, blocos de 1h30, flashcards no trajeto. Esse é o plano padrão — quando tudo corre bem, execute 100%.</div>
+    </div>
+
+    <div class="alert-card">
+      <div class="alert-title">🟡 DIA MÉDIO — noite ruim, mas você está de pé</div>
+      <div class="alert-body">
+        <strong>O que fazer:</strong> Reduza o bloco de estudo de 1h30 para 45 min. Foque exclusivamente em resolução de questões (é mais ativo e mantém atenção com cansaço). Não tente aprender coisa nova — revise o que já sabe. No trajeto, use áudio em vez de texto escrito. Mantenha ao menos 15 min de flashcards — é o mínimo que não deixa você regredir.
+      </div>
+    </div>
+
+    <div class="alert-card" style="border-left-color:var(--rose);">
+      <div class="alert-title">🔴 DIA CAÓTICO — quase não dormiu, bebê agitado</div>
+      <div class="alert-body">
+        <strong>Modo sobrevivência:</strong> Abra 1 flashcard, leia 1 página, ouça 10 min de áudio. Isso conta. Não tente Pomodoro, não abra apostila de 200 páginas. O objetivo é manter o hábito vivo — a chama acesa. Durma se puder enquanto ele dorme. Cuidar de você é parte do plano.
+      </div>
+    </div>
+
+    <div class="alert-card green-alert">
+      <div class="alert-title">💡 ESTRATÉGIAS INTELIGENTES com bebê</div>
+      <div class="alert-body">
+        <strong>Estude junto com ele:</strong> Quando o bebê estiver no tummy time ou acordado tranquilo, coloque o áudio da aula. Você cuida dele e absorve conteúdo ao mesmo tempo.<br><br>
+        <strong>Flashcards rápidos:</strong> Deixe cartões físicos ou o app Anki sempre aberto. 5 flashcards enquanto aquece o leite já é estudo.<br><br>
+        <strong>Revise enquanto amamenta:</strong> Se estiver auxiliando a esposa na amamentação noturna, leve 1 folha de resumo. Luz baixa, leitura leve.<br><br>
+        <strong>Negociação com a esposa:</strong> "Você cuida por 45 min à tarde, eu cuido 45 min à noite enquanto você descansa." Comunique, não suponha.
+      </div>
+    </div>
+
+    <div class="alert-card purple-alert">
+      <div class="alert-title">📅 SEMANA PADRÃO ADAPTADA (bebê fase 0–3 meses)</div>
+      <div class="alert-body">
+        <strong>SEG/QUA/SEX:</strong> Bloco principal de 1h30 (quando bebê dorme mais longo à tarde) — matéria nova + questões.<br>
+        <strong>TER/QUI:</strong> Blocos curtos de 45 min — só revisão e questões.<br>
+        <strong>SÁB:</strong> 2h30 pela manhã — revisão semanal e avanço de conteúdo.<br>
+        <strong>DOM:</strong> Descanso real. Não estude. Recarregue para a semana.
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FERRAMENTAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">🛠️</div>
+      <div>
+        <div class="section-num">04 — Ferramentas</div>
+        <div class="section-title">Apps e recursos recomendados</div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="info-card-icon">🃏</div>
+        <div class="info-card-title">Anki</div>
+        <div class="info-card-body">Flashcards com repetição espaçada. Instale no celular e use no trajeto, na fila, em qualquer brecha. O algoritmo te mostra o cartão certo na hora certa — é ciência.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">❓</div>
+        <div class="info-card-title">QConcursos / Gran</div>
+        <div class="info-card-body">Bancos de questões com filtro por assunto e banca. Resolva 10 questões por dia por matéria. Analise sempre os erros — são os erros que te ensinam.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🎧</div>
+        <div class="info-card-title">Podcast + Áudio</div>
+        <div class="info-card-body">Grave seus próprios resumos em voz, use podcasts jurídicos ou de atualidades. Transporte (1h20/dia) vira sala de aula passiva.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🗺️</div>
+        <div class="info-card-title">Mapas Mentais</div>
+        <div class="info-card-body">Crie um mapa mental por matéria após estudar o conteúdo. Use papel ou app (Xmind, Canva). Revise os mapas semanalmente — é revisão de 5 min que vale 1h de leitura.</div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  Plano de estudo adaptado para pai de recém-nascido — consistência pequena e diária supera intensidade esporádica.
+</div>
+</div><!-- /page-concurso -->
+
+
+<!-- ========================================================================================
+     PÁGINA 3 — ESTIMULAÇÃO BEBÊ
+======================================================================================== -->
+<div id="page-bebe" class="page">
+
+<div class="page-cover baby-cover">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Gerar PDF / Imprimir
+  </button>
+  <div class="cover-eyebrow">Desenvolvimento Infantil</div>
+  <h2>Guia Completo de<br>Estimulação — 0 a 12 meses</h2>
+  <p>Todos os exercícios e estímulos separados por faixa etária — motor, cognitivo e socioafetivo</p>
+</div>
+
+<div class="container">
+
+  <!-- LEGENDA -->
+  <div class="section">
+    <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:24px;">
+      <div style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--blue-mid);">
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--blue-mid);"></div> Desenvolvimento Motor
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--purple);">
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--purple);"></div> Desenvolvimento Cognitivo (QI)
+      </div>
+      <div style="display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; color:var(--teal);">
+        <div style="width:12px;height:12px;border-radius:50%;background:var(--teal);"></div> Socioafetivo / Linguagem (QE)
+      </div>
+    </div>
+
+    <!-- FASE 0-3 MESES -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <span style="font-size:22px;">🌱</span>
+        <h3>0 a 3 meses</h3>
+        <span class="phase-badge">Fase atual</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-grid">
+          <div class="phase-category">
+            <div class="phase-cat-title motor">🏃 Motor</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Tummy time (barriga para baixo) 2–3x ao dia, 3–5 min com apoio do pai</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Movimento suave de braços e pernas (bicicleta com as perninhas)</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Segurar o dedão do pai e fazer leve tração para fortalecer a cervical</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Deitar de lado alternando os lados para desenvolver pescoço</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Massagem suave em todo o corpo (toque é neurológico)</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title cog">🧠 Cognitivo</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Seguir objeto lento (bolinha, brinquedo) a 20–30 cm dos olhos</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Mostrar luz de lanterna (suave) e esconder — ativa atenção visual</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Contrastes em preto e branco (bebê enxerga melhor assim)</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Sons variados: chocalho, vozes, música clássica leve</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Móbile colorido a 30–40 cm do rosto</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title social">💬 Socioafetivo</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Contato visual sustentado — olhe nos olhos e sorria, espere resposta</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Fale sempre com ele descrevendo o que faz ("agora vou trocar sua fralda")</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Imite sons que ele fizer — isso cria circuito de resposta</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Leitura em voz alta — voz do pai é âncora de segurança</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Canto de cantigas suaves — ritmo é neurológico</div>
+          </div>
+        </div>
+        <div class="pai-tip">
+          <strong>💡 Dica do Pai:</strong> O melhor momento para tummy time é após a troca de fralda, com o bebê acordado e satisfeito. Deite no chão na altura dele, olhe nos olhos e faça careta — isso é estimulação cognitiva e vínculo ao mesmo tempo. 3 minutos de presença total valem mais que 30 minutos distraído.
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 3-6 MESES -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <span style="font-size:22px;">🌿</span>
+        <h3>3 a 6 meses</h3>
+        <span class="phase-badge">Próxima fase</span>
+      </div>
+      <div class="phase-body">
+        <div class="phase-grid">
+          <div class="phase-category">
+            <div class="phase-cat-title motor">🏃 Motor</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Tummy time mais longo (5–10 min), empurrando com os braços</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Sentar com apoio das mãos do pai (tripé)</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Rolar do lado para a barriga e de volta (com assistência)</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Apoiar pés no chão com suporte — protomarcha</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Alcançar brinquedos posicionados levemente fora do alcance</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title cog">🧠 Cognitivo</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Objeto com barulho que reage ao toque (brinquedo de causa e efeito)</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Espelho — bebê se descobre aos 4 meses, reage ao próprio reflexo</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Livros de pano com texturas diferentes</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Objetos coloridos e de tamanhos variados para explorar</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Música com ritmo variado — estimula padrão auditivo</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title social">💬 Socioafetivo</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Brincadeira de "cocoricó" ou esconde-esconde rosto</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Riso social — faça ele rir, repita o que causou o riso</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Nomear partes do corpo durante o banho</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Conversa "turno a turno" — ele balbucia, você responde</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Mostrar emoções exageradas (surpresa, alegria) — ele copia</div>
+          </div>
+        </div>
+        <div class="pai-tip">
+          <strong>💡 Dica do Pai:</strong> Nessa fase o bebê começa a distinguir rostos familiares e estranhos. Sua voz e rosto já são associados a segurança. Aproveite para fazer brincadeiras de esconde-esconde com o rosto — a antecipação e a revelação são estímulos cognitivos poderosos.
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 6-9 MESES -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <span style="font-size:22px;">🌳</span>
+        <h3>6 a 9 meses</h3>
+      </div>
+      <div class="phase-body">
+        <div class="phase-grid">
+          <div class="phase-category">
+            <div class="phase-cat-title motor">🏃 Motor</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Sentar sem apoio por períodos curtos</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Introdução ao engatinhar: incentivar a arrastar</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Transferir objeto de uma mão para outra</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Pegar objetos pequenos com os dedos (pinça primitiva)</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Pular no colo do pai com pés no chão</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title cog">🧠 Cognitivo</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Permanência do objeto: esconder brinquedo debaixo do pano e mostrar que está lá</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Empilhar e derrubar — ação/consequência</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Dar e receber objeto (vai e vem)</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Abrir e fechar recipientes</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Bater duas tampas/brinquedos um no outro</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title social">💬 Socioafetivo</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Imitar gestos: bater palma, tchau, bater na mesa</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Nomear objetos do ambiente repetidamente</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Músicas com gestos (estica e puxa, batatinha frita)</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Leitura de livros com imagens grandes e simples</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Apresentar outras crianças/familiares (socialização)</div>
+          </div>
+        </div>
+        <div class="pai-tip">
+          <strong>💡 Dica do Pai:</strong> O conceito de permanência do objeto (saber que algo existe mesmo sem ver) é um marco cognitivo enorme. Brinque de esconder o brinquedo embaixo de um pano bem na frente dele e veja o momento em que ele vai procurar — isso é neurociência acontecendo ao vivo.
+        </div>
+      </div>
+    </div>
+
+    <!-- FASE 9-12 MESES -->
+    <div class="phase-block">
+      <div class="phase-header">
+        <span style="font-size:22px;">🌟</span>
+        <h3>9 a 12 meses</h3>
+      </div>
+      <div class="phase-body">
+        <div class="phase-grid">
+          <div class="phase-category">
+            <div class="phase-cat-title motor">🏃 Motor</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Engatinhar ativo — crie circuito de almofadas e obstáculos</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Puxar para ficar em pé segurando no sofá/grade</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Andar de lado segurando em superfície (marcha lateral)</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Pinça fina: pegar migalhas, macarrãozinho, objetos pequenos</div>
+            <div class="phase-activity"><div class="phase-dot motor"></div>Jogar bola (rolar com as mãos)</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title cog">🧠 Cognitivo</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Encaixar formas básicas em formas</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Empilhar 2–3 blocos</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Colocar objetos dentro de um pote e tirar</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Seguir instruções simples: "me dá", "não"</div>
+            <div class="phase-activity"><div class="phase-dot cog"></div>Folhear livros de pano</div>
+          </div>
+          <div class="phase-category">
+            <div class="phase-cat-title social">💬 Socioafetivo</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Primeiras palavras-raiz: "papá", "mamá", "dá"</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Apontar para objetos e nomeá-los juntos</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Brincadeira social: esconde-achou completo</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Mostrar emoções e nomeá-las: "você ficou bravo", "que alegria!"</div>
+            <div class="phase-activity"><div class="phase-dot social"></div>Dançar com o bebê no colo ao som de música rítmica</div>
+          </div>
+        </div>
+        <div class="pai-tip">
+          <strong>💡 Dica do Pai:</strong> Nessa fase ele vai começar a entender que você tem intenção e a querer compartilhar experiências com você. Quando ele apontar algo, vá até lá, olhe junto, nomeie. Esse gesto simples — atenção compartilhada — é um dos maiores preditores de desenvolvimento de linguagem.
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /section -->
+
+  <hr class="divider">
+
+  <!-- TABELA RESUMO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--teal-light);">📊</div>
+      <div>
+        <div class="section-num">Resumo</div>
+        <div class="section-title">Marcos do desenvolvimento por fase</div>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Marco Motor</th>
+          <th>Marco Cognitivo</th>
+          <th>Marco Socioafetivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0–3 meses</td>
+          <td>Controla cabeça no tummy time</td>
+          <td>Segue objeto com os olhos</td>
+          <td>Sorriso social responsivo</td>
+        </tr>
+        <tr>
+          <td>3–6 meses</td>
+          <td>Rola, alcança objetos</td>
+          <td>Reage a espelho</td>
+          <td>Ri alto, distingue rostos</td>
+        </tr>
+        <tr>
+          <td>6–9 meses</td>
+          <td>Senta com apoio, transfere objetos</td>
+          <td>Permanência do objeto</td>
+          <td>Imita gestos, ansiedade de separação</td>
+        </tr>
+        <tr>
+          <td>9–12 meses</td>
+          <td>Engatinha, fica em pé com apoio</td>
+          <td>Encaixa formas, segue instrução</td>
+          <td>Primeiras palavras, aponta objetos</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  Estimulação não é pressão — é presença e brincadeira. O pai presente é o melhor estímulo que seu filho pode ter.
+</div>
+</div><!-- /page-bebe -->
+
+
+<!-- ========================================================================================
+     PÁGINA 4 — EXERCÍCIOS
+======================================================================================== -->
+<div id="page-treino" class="page">
+
+<div class="page-cover exercise-cover">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Gerar PDF / Imprimir
+  </button>
+  <div class="cover-eyebrow">Treinamento</div>
+  <h2>Guia Completo de<br>Exercícios — Abdômen + Jiu-jitsu</h2>
+  <p>Todos os exercícios detalhados, organizados por dia da semana e nível de intensidade</p>
+</div>
+
+<div class="container">
+
+  <!-- ORGANIZAÇÃO DA SEMANA -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--purple-light);">📅</div>
+      <div>
+        <div class="section-num">01 — Organização</div>
+        <div class="section-title">Divisão semanal do treino (40 min/dia)</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:10px; margin-bottom:20px;">
+      <div class="day-card">
+        <div class="day-name">SEG</div>
+        <span class="day-pill purple">Core A</span>
+        <span class="day-pill teal">Jiu: Base</span>
+        <span class="day-pill amber">Alongar</span>
+        <div style="font-size:10px; color:var(--gray); margin-top:8px;">🔥 Intensidade: Média</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">TER</div>
+        <span class="day-pill purple">Core B</span>
+        <span class="day-pill teal">Jiu: Quedas</span>
+        <span class="day-pill green">Cardio 15min</span>
+        <div style="font-size:10px; color:var(--gray); margin-top:8px;">🔥🔥 Intensidade: Alta</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">QUA</div>
+        <span class="day-pill purple">Abdômen+</span>
+        <span class="day-pill teal">Jiu: Guard</span>
+        <span class="day-pill amber">Mobilidade</span>
+        <div style="font-size:10px; color:var(--gray); margin-top:8px;">🔥🔥🔥 Intensidade: Max</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">QUI</div>
+        <span class="day-pill purple">Core C</span>
+        <span class="day-pill teal">Jiu: Final.</span>
+        <span class="day-pill green">Cardio 15min</span>
+        <div style="font-size:10px; color:var(--gray); margin-top:8px;">🔥🔥 Intensidade: Alta</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">SEX</div>
+        <span class="day-pill purple">Circuito</span>
+        <span class="day-pill teal">Jiu: Livre</span>
+        <span class="day-pill amber">Revisão</span>
+        <div style="font-size:10px; color:var(--gray); margin-top:8px;">🔥🔥 Intensidade: Alta</div>
+      </div>
+    </div>
+
+    <div class="info-card" style="background:var(--purple-light); border-color:rgba(91,63,166,0.15);">
+      <div class="info-card-title" style="color:var(--purple);">⏱️ Estrutura de cada sessão de 40 min</div>
+      <div class="info-card-body" style="margin-top:8px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+        <div style="text-align:center;">
+          <div style="font-size:18px; font-weight:700; color:var(--purple);">5 min</div>
+          <div style="font-size:11px; color:var(--gray);">Aquecimento</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:18px; font-weight:700; color:var(--blue-mid);">20 min</div>
+          <div style="font-size:11px; color:var(--gray);">Abdômen/Core</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:18px; font-weight:700; color:var(--teal);">10 min</div>
+          <div style="font-size:11px; color:var(--gray);">Jiu-jitsu drills</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-size:18px; font-weight:700; color:var(--amber);">5 min</div>
+          <div style="font-size:11px; color:var(--gray);">Alongamento</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- AQUECIMENTO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--amber-light);">🔥</div>
+      <div>
+        <div class="section-num">02 — Aquecimento</div>
+        <div class="section-title">5 minutos — todos os dias</div>
+      </div>
+    </div>
+    <div class="exercise-grid">
+      <div class="exercise-card">
+        <div class="exercise-card-header">
+          <div class="exercise-card-title">Polichinelos</div>
+          <span class="tl-badge badge-amber">30 seg × 2</span>
+        </div>
+        <div class="exercise-card-body">
+          <div class="exercise-desc">Eleva frequência cardíaca rapidamente e aquece articulações. Mantenha ritmo moderado, não precisa ser rápido.</div>
+          <div class="exercise-steps">
+            <div class="exercise-step"><div class="step-num">1</div>Pés juntos, braços ao lado do corpo</div>
+            <div class="exercise-step"><div class="step-num">2</div>Pule abrindo pernas e levantando braços acima da cabeça</div>
+            <div class="exercise-step"><div class="step-num">3</div>Retorne à posição inicial. Repita no ritmo</div>
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-card-header">
+          <div class="exercise-card-title">Rotação de quadril e ombros</div>
+          <span class="tl-badge badge-amber">10 círculos cada</span>
+        </div>
+        <div class="exercise-card-body">
+          <div class="exercise-desc">Lubrifica articulações para movimentos do jiu-jitsu. Essencial antes de qualquer treino de solo.</div>
+          <div class="exercise-steps">
+            <div class="exercise-step"><div class="step-num">1</div>Quadril: círculos amplos 10x para cada lado</div>
+            <div class="exercise-step"><div class="step-num">2</div>Ombros: rolamento para frente e para trás 10x</div>
+            <div class="exercise-step"><div class="step-num">3</div>Pescoço: inclinar devagar para cada lado (sem rotação)</div>
+          </div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-card-header">
+          <div class="exercise-card-title">Agachamento livre</div>
+          <span class="tl-badge badge-amber">15 reps</span>
+        </div>
+        <div class="exercise-card-body">
+          <div class="exercise-desc">Ativa glúteos, quadríceps e coluna. Base de mobilidade para o jiu-jitsu e queima calórica.</div>
+          <div class="exercise-steps">
+            <div class="exercise-step"><div class="step-num">1</div>Pés na largura dos ombros, pés levemente abertos</div>
+            <div class="exercise-step"><div class="step-num">2</div>Desça até a coxa ficar paralela ao chão</div>
+            <div class="exercise-step"><div class="step-num">3</div>Suba empurrando o chão com os calcanhares</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ABDÔMEN / CORE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--purple-light);">💪</div>
+      <div>
+        <div class="section-num">03 — Abdômen e Core</div>
+        <div class="section-title">Circuitos A, B, C e Intenso — 20 min</div>
+      </div>
+    </div>
+
+    <!-- CORE A (segunda) -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:var(--purple);">
+        <div class="subject-block-title">Core A — Segunda-feira</div>
+        <span class="tl-badge" style="background:rgba(255,255,255,0.2); color:white;">3 séries</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Prancha frontal (Plank)</div>
+            <div class="subject-detail"><strong>30–60 seg × 3 séries.</strong> Deitado de bruços, apoie nos antebraços e nas pontas dos pés. Corpo reto como uma tábua — não deixe o quadril afundar nem subir. Respire normalmente. Este é o rei do core.</div>
+          </div>
+          <span class="tl-badge badge-purple">Core total</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Abdominal crunch clássico</div>
+            <div class="subject-detail"><strong>20 reps × 3 séries.</strong> Deitado, joelhos dobrados, mãos atrás da cabeça. Suba até os cotovelos tocarem os joelhos — não force o pescoço. Desça devagar (excêntrica). Expira subindo.</div>
+          </div>
+          <span class="tl-badge badge-purple">Reto abdominal</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Leg raise (elevação de pernas)</div>
+            <div class="subject-detail"><strong>15 reps × 3 séries.</strong> Deitado de costas, mãos sob os glúteos. Eleve as pernas até 90º sem dobrar os joelhos. Desça lentamente sem tocar o chão. Foco: parte baixa do abdômen.</div>
+          </div>
+          <span class="tl-badge badge-purple">Abdômen inferior</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Hollow body hold</div>
+            <div class="subject-detail"><strong>20 seg × 3 séries.</strong> Deitado, lombos colados no chão, braços esticados acima da cabeça, pernas levemente elevadas. Mantenha a posição. Muito usado em ginástica e funcional — ativa core profundo.</div>
+          </div>
+          <span class="tl-badge badge-purple">Core profundo</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORE B (terça) -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:var(--blue-deep);">
+        <div class="subject-block-title">Core B — Terça-feira</div>
+        <span class="tl-badge" style="background:rgba(255,255,255,0.2); color:white;">3 séries + cardio</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Mountain climbers</div>
+            <div class="subject-detail"><strong>30 seg × 3 séries.</strong> Posição de prancha alta (braços estendidos). Traga um joelho de cada vez em direção ao peito alternando rapidamente. É abdominal + cardio simultâneos. Ótimo para queima de gordura.</div>
+          </div>
+          <span class="tl-badge badge-blue">Core + cardio</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Russian twist</div>
+            <div class="subject-detail"><strong>20 reps totais × 3 séries.</strong> Sentado, tronco inclinado para trás 45°, pés elevados, gire o tronco de lado a lado tocando o chão com as mãos (ou com peso). Trabalha oblíquos — fundamental para o jiu-jitsu.</div>
+          </div>
+          <span class="tl-badge badge-blue">Oblíquos</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Dead bug</div>
+            <div class="subject-detail"><strong>10 reps cada lado × 3 séries.</strong> Deitado, braços estendidos para cima, joelhos a 90°. Estenda simultaneamente o braço esquerdo e a perna direita próximos ao chão sem encostar. Alterne. Lombar colada no chão sempre.</div>
+          </div>
+          <span class="tl-badge badge-blue">Core profundo</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Cardio leve (pular corda ou corrida no lugar)</div>
+            <div class="subject-detail"><strong>15 min contínuos.</strong> Ritmo moderado onde você consegue falar frases curtas. Queima calórica aeróbica essencial para atingir 65 kg. Pode usar rádio ou podcast para passar o tempo.</div>
+          </div>
+          <span class="tl-badge badge-green">Aeróbico</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABDÔMEN INTENSO (quarta) -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:#7B1D2E;">
+        <div class="subject-block-title">Abdômen Intenso — Quarta-feira</div>
+        <span class="tl-badge" style="background:rgba(255,255,255,0.2); color:white;">Máxima intensidade</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🔥</div>
+          <div class="subject-content">
+            <div class="subject-name">Tabata abdominal (4 min)</div>
+            <div class="subject-detail"><strong>8 rounds: 20 seg on / 10 seg off.</strong> Alterne entre crunch e leg raise. Protocolo Tabata: o mais eficiente por minuto existente. 4 minutos = o equivalente a 20 min de aeróbico leve. Dói, mas funciona.</div>
+          </div>
+          <span class="tl-badge badge-rose">Alta intensidade</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔥</div>
+          <div class="subject-content">
+            <div class="subject-name">Burpee abdominal</div>
+            <div class="subject-detail"><strong>10 reps × 3 séries.</strong> Partindo de pé, desça para a prancha, faça 1 flexão, suba de volta e pule. Treino funcional completo que ativa o core em todas as fases do movimento.</div>
+          </div>
+          <span class="tl-badge badge-rose">Full body</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔥</div>
+          <div class="subject-content">
+            <div class="subject-name">Prancha lateral</div>
+            <div class="subject-detail"><strong>30 seg cada lado × 3 séries.</strong> Apoie num antebraço, corpo em diagonal. Mantenha o quadril elevado. Trabalha o oblíquo lateral — previne lesões na coluna e é específico para jiu-jitsu (guard, sweep).</div>
+          </div>
+          <span class="tl-badge badge-rose">Oblíquos</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔥</div>
+          <div class="subject-content">
+            <div class="subject-name">V-up (canivete)</div>
+            <div class="subject-detail"><strong>15 reps × 3 séries.</strong> Deitado com braços estendidos acima da cabeça. Suba simultaneamente braços e pernas formando um V. Toque os pés com as mãos. Exige abdômen superior e inferior ao mesmo tempo.</div>
+          </div>
+          <span class="tl-badge badge-rose">Abdômen total</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CORE C (quinta — oblíquos) -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:var(--teal);">
+        <div class="subject-block-title">Core C — Quinta-feira (foco em oblíquos)</div>
+        <span class="tl-badge" style="background:rgba(255,255,255,0.2); color:white;">3 séries</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Crunch oblíquo alternado</div>
+            <div class="subject-detail"><strong>20 reps × 3 séries.</strong> Deitado, joelhos dobrados. Leve o cotovelo direito em direção ao joelho esquerdo e vice-versa. Suba com rotação de tronco. Trabalha o oblíquo externo — cria a definição lateral.</div>
+          </div>
+          <span class="tl-badge badge-teal">Oblíquo ext.</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Side plank com elevação de quadril</div>
+            <div class="subject-detail"><strong>15 elevações × 3 séries cada lado.</strong> Na posição de prancha lateral, desça o quadril quase até o chão e suba o mais alto possível. Muito mais eficiente que a prancha estática.</div>
+          </div>
+          <span class="tl-badge badge-teal">Oblíquo int.</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Bicycle crunch</div>
+            <div class="subject-detail"><strong>30 reps × 3 séries.</strong> Deitado, mãos atrás da cabeça. Pedale as pernas enquanto leva o cotovelo ao joelho oposto. Movimento lento e controlado — não jogue o cotovelo, rotacione o tronco.</div>
+          </div>
+          <span class="tl-badge badge-teal">Oblíquos + lower</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🔹</div>
+          <div class="subject-content">
+            <div class="subject-name">Cardio leve</div>
+            <div class="subject-detail"><strong>15 min.</strong> Caminhada rápida, corrida leve ou corda. Acelera o metabolismo e potencializa a queima de gordura abdominal junto com o trabalho de core que acabou de fazer.</div>
+          </div>
+          <span class="tl-badge badge-green">Aeróbico</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CIRCUITO SEXTA -->
+    <div class="subject-block">
+      <div class="subject-block-header" style="background:var(--navy);">
+        <div class="subject-block-title">Circuito Completo — Sexta-feira</div>
+        <span class="tl-badge" style="background:rgba(255,255,255,0.2); color:white;">Sequência sem pausa</span>
+      </div>
+      <div class="subject-block-body">
+        <div class="info-card-body" style="margin-bottom:12px; font-size:13px;">Complete o circuito abaixo 3 vezes com 60 seg de descanso entre os rounds. É o treino mais eficiente para queima de gordura e fortalecimento simultâneos.</div>
+        <div class="subject-row">
+          <div class="subject-icon">①</div>
+          <div class="subject-content">
+            <div class="subject-name">20 crunches + 15 leg raise + 10 V-ups</div>
+            <div class="subject-detail">Sequência de abdômen — execute sem pausa entre os exercícios. Isso cria tensão metabólica que maximiza a definição.</div>
+          </div>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">②</div>
+          <div class="subject-content">
+            <div class="subject-name">30 seg mountain climbers</div>
+            <div class="subject-detail">Transição cardio — mantém a frequência cardíaca elevada sem sair do chão.</div>
+          </div>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">③</div>
+          <div class="subject-content">
+            <div class="subject-name">20 Russian twists + 30 seg prancha</div>
+            <div class="subject-detail">Finaliza oblíquos e core profundo. Na prancha, foque em manter a respiração ritmada.</div>
+          </div>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">④</div>
+          <div class="subject-content">
+            <div class="subject-name">60 seg descanso → repita 3x</div>
+            <div class="subject-detail">Recuperação ativa — caminhe lentamente durante o descanso para não esfriar demais.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- JIU-JITSU DRILLS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--teal-light);">🥋</div>
+      <div>
+        <div class="section-num">04 — Jiu-jitsu</div>
+        <div class="section-title">Drills técnicos em casa — 10 min/dia</div>
+      </div>
+    </div>
+
+    <div class="info-card" style="background:var(--teal-light); border-color:rgba(29,158,117,0.2); margin-bottom:16px;">
+      <div class="info-card-title" style="color:var(--teal);">📌 Como fazer drill em casa sem parceiro</div>
+      <div class="info-card-body">Drills de jiu-jitsu solo trabalham memória muscular, mobilidade específica e padrões de movimento. Faça lentamente no início — velocidade vem depois da qualidade. Use um tatame, colchonete ou carpete. 10 min diários superam 1h semanal sem consistência.</div>
+    </div>
+
+    <!-- SEGUNDA - POSTURA BASE -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:var(--teal);">
+        <div class="subject-block-title">🥋 Segunda — Postura Base e Movimentação</div>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Shrimping (camarão)</div>
+            <div class="subject-detail"><strong>10x para cada lado.</strong> Deitado de costas. Impulsione com os pés no chão, curve o corpo para o lado e avance o quadril. É o movimento de fuga mais importante do jiu-jitsu. Pratique lento, depois rápido.</div>
+          </div>
+          <span class="tl-badge badge-teal">Fuga/defesa</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Bridging (ponte)</div>
+            <div class="subject-detail"><strong>15 reps.</strong> Deitado de costas, apoie cabeça e pés, eleve os quadris e role para o lado. Treina a saída de posição montada. Fortalece pescoço, coluna e glúteos.</div>
+          </div>
+          <span class="tl-badge badge-teal">Escape mount</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Ginga (postura de pé)</div>
+            <div class="subject-detail"><strong>2 min contínuos.</strong> Em pé, postura de jiu-jitsu (um pé à frente), movimento lateral e de troca de pernas. Treina equilíbrio, reação e posicionamento base. Essencial para o combate em pé.</div>
+          </div>
+          <span class="tl-badge badge-teal">Base + equil.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TERÇA - QUEDAS -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:var(--blue-deep);">
+        <div class="subject-block-title">🥋 Terça — Quedas e Rolamentos</div>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Ukemi (queda para trás)</div>
+            <div class="subject-detail"><strong>10 reps.</strong> Sentado no chão, role para trás batendo os braços no chão para absorver o impacto antes das costas tocarem. Evoluir para de pé. Fundamental para segurança no treino.</div>
+          </div>
+          <span class="tl-badge badge-blue">Segurança</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Rolamento para frente</div>
+            <div class="subject-detail"><strong>10 reps.</strong> Role pela diagonal do ombro, não pela cabeça. Termine em posição de guarda ou de pé. Mantenha o queixo no peito durante todo o rolamento.</div>
+          </div>
+          <span class="tl-badge badge-blue">Mobilidade</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Technical stand up</div>
+            <div class="subject-detail"><strong>10 reps cada lado.</strong> Do chão, apoie uma mão e o pé oposto, levante o quadril e empurre para ficar em pé guardando o espaço com a outra mão. Levantar do chão com postura defensiva.</div>
+          </div>
+          <span class="tl-badge badge-blue">Levantada</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUARTA - GUARD / SWEEP -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:#4A2C7A;">
+        <div class="subject-block-title">🥋 Quarta — Guarda e Sweeps</div>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Hip bump sweep solo</div>
+            <div class="subject-detail"><strong>10 reps cada lado.</strong> Da guarda fechada (imaginária), role para o lado, impulsione o quadril para cima e esticando o braço como se estivesse derrubando o oponente. Treina a iniciação do sweep mais básico do jiu-jitsu.</div>
+          </div>
+          <span class="tl-badge badge-purple">Guarda</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Transição guarda → meia-guarda</div>
+            <div class="subject-detail"><strong>10 reps cada lado.</strong> Deitado de costas, simule a transição entre guarda fechada e meia-guarda, praticando o controle de quadril e a movimentação dos quadris.</div>
+          </div>
+          <span class="tl-badge badge-purple">Transição</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Inversão e turtle solo</div>
+            <div class="subject-detail"><strong>10 reps.</strong> Da posição de guarda (costas no chão), inverta girando sobre o ombro para chegar em posição de quatro apoios (turtle). Treina agilidade de inversão.</div>
+          </div>
+          <span class="tl-badge badge-purple">Inversão</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUINTA - FINALIZAÇÕES -->
+    <div class="subject-block" style="margin-bottom:14px;">
+      <div class="subject-block-header" style="background:var(--navy);">
+        <div class="subject-block-title">🥋 Quinta — Finalizações e Posições Dominantes</div>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Armlock (Juji-gatame) solo</div>
+            <div class="subject-detail"><strong>10 reps cada lado.</strong> Deitado de costas com o braço estendido entre as pernas, simule o movimento de hiperestensão do cotovelo. Foco no posicionamento correto das ancas e controle.</div>
+          </div>
+          <span class="tl-badge badge-blue">Finalização</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Triangle setup solo</div>
+            <div class="subject-detail"><strong>10 reps.</strong> Da guarda fechada, simule a abertura da guarda, traga uma perna sobre o ombro e aplique o triângulo com as pernas. Pratique a entrada e o ajuste do ângulo.</div>
+          </div>
+          <span class="tl-badge badge-blue">Finalização</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🥋</div>
+          <div class="subject-content">
+            <div class="subject-name">Passagem de guarda solo (toreando)</div>
+            <div class="subject-detail"><strong>10 reps cada lado.</strong> Em pé, simule o passo lateral e o giro de quadril para passar para o lado do oponente imaginário. Treina a mecânica da passagem toreando, uma das mais usadas.</div>
+          </div>
+          <span class="tl-badge badge-blue">Passagem</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEXTA - LIVRE / REVISÃO -->
+    <div class="subject-block">
+      <div class="subject-block-header" style="background:var(--green);">
+        <div class="subject-block-title">🥋 Sexta — Treino Livre e Revisão da Semana</div>
+      </div>
+      <div class="subject-block-body">
+        <div class="subject-row">
+          <div class="subject-icon">🎯</div>
+          <div class="subject-content">
+            <div class="subject-name">Revisão das técnicas da semana</div>
+            <div class="subject-detail"><strong>5 min.</strong> Refaça todos os drills da semana, 3 reps de cada. Isso consolida a memória muscular e identifica o que precisa de mais trabalho.</div>
+          </div>
+          <span class="tl-badge badge-green">Revisão</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🎯</div>
+          <div class="subject-content">
+            <div class="subject-name">Drill do ponto mais fraco</div>
+            <div class="subject-detail"><strong>5 min focado.</strong> Qual técnica foi mais difícil esta semana? Dedique esses 5 minutos repetindo ela até que fique natural. Progredir vem do foco nas fraquezas.</div>
+          </div>
+          <span class="tl-badge badge-green">Foco</span>
+        </div>
+        <div class="subject-row">
+          <div class="subject-icon">🎯</div>
+          <div class="subject-content">
+            <div class="subject-name">Assista 5 min de jiu-jitsu</div>
+            <div class="subject-detail">YouTube (Firas Zahabi, John Danaher, Lucas Lepri): veja técnicas sendo executadas por faixa preta. O cérebro aprende por visualização — isso conta como treino mental.</div>
+          </div>
+          <span class="tl-badge badge-green">Mental</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ALONGAMENTO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--amber-light);">🧘</div>
+      <div>
+        <div class="section-num">05 — Alongamento</div>
+        <div class="section-title">5 minutos — finalização de todos os treinos</div>
+      </div>
+    </div>
+
+    <div class="exercise-grid">
+      <div class="exercise-card">
+        <div class="exercise-card-header">
+          <div class="exercise-card-title">Alongamento de quadril (pombo)</div>
+          <span class="tl-badge badge-amber">30 seg × 2 lados</span>
+        </div>
+        <div class="exercise-card-body">
+          <div class="exercise-desc">Essencial para jiu-jitsu. Deitado, traga um joelho para o peito e cruce sobre a outra perna. Segure por 30 seg. Libera tensão do piriforme e quadril — músculos muito usados na guarda.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-card-header">
+          <div class="exercise-card-title">Cobra (extensão de coluna)</div>
+          <span class="tl-badge badge-amber">30 seg × 2</span>
+        </div>
+        <div class="exercise-card-body">
+          <div class="exercise-desc">Deitado de bruços, estenda os braços empurrando o tronco para cima enquanto o quadril fica no chão. Alonga o abdômen e descomprime a coluna lombrar após o trabalho de core.</div>
+        </div>
+      </div>
+      <div class="exercise-card">
+        <div class="exercise-card-header">
+          <div class="exercise-card-title">Rotação de coluna deitado</div>
+          <span class="tl-badge badge-amber">30 seg × 2 lados</span>
+        </div>
+        <div class="exercise-card-body">
+          <div class="exercise-desc">Deitado de costas, leve ambos os joelhos dobrados para um lado enquanto os braços ficam abertos. Alonga a fáscia torácica e os oblíquos. Muito relaxante após treino intenso.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- PROGRESSÃO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">📈</div>
+      <div>
+        <div class="section-num">06 — Progressão</div>
+        <div class="section-title">Como evoluir ao longo dos meses</div>
+      </div>
+    </div>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Mês</th>
+          <th>Foco Abdômen</th>
+          <th>Foco Jiu-jitsu</th>
+          <th>Meta de Peso</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Mês 1–2</td>
+          <td>Construir o hábito. 3 séries, form perfeita, sem pular dia</td>
+          <td>Shrimping, bridging e ginga todos os dias</td>
+          <td>74 → 72 kg</td>
+        </tr>
+        <tr>
+          <td>Mês 3–4</td>
+          <td>Adicionar Tabata na quarta. Aumentar reps em 20%</td>
+          <td>Adicionar quedas e passagem toreando</td>
+          <td>72 → 70 kg</td>
+        </tr>
+        <tr>
+          <td>Mês 5–6</td>
+          <td>4 séries no circuito de sexta. Adicionar peso (garrafa d'água)</td>
+          <td>Drills de guarda e finalizações com fluidez</td>
+          <td>70 → 68 kg</td>
+        </tr>
+        <tr>
+          <td>Mês 7–12</td>
+          <td>Circuito avançado 4x/semana. Considerar treino externo (academia/academia de JJ)</td>
+          <td>Retorno ao treino presencial de jiu-jitsu</td>
+          <td>68 → 65 kg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div><!-- /container -->
+
+<div class="footer">
+  40 minutos de treino diário e consistente superam 2 horas semanais irregulares. Cada sessão é um voto pela versão mais forte de você.
+</div>
+</div><!-- /page-treino -->
+
 
 <script>
+// ========== IDADE DO BEBÊ ==========
 (function() {
-  var nasc = new Date(2026, 3, 21); // 21 de abril de 2026 (mês 0-indexed)
+  var nasc = new Date(2026, 3, 21);
   var hoje = new Date();
   var diffMs = hoje - nasc;
   var dias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -982,35 +2360,49 @@
   if (hoje.getDate() < nasc.getDate()) meses--;
 
   var textoIdade = '';
-  var textoLabel = '';
-
   if (dias < 30) {
     textoIdade = dias + (dias === 1 ? ' dia' : ' dias');
-    textoLabel = 'de vida';
   } else if (meses < 3) {
     textoIdade = semanas + (semanas === 1 ? ' semana' : ' semanas');
-    textoLabel = 'de vida';
   } else if (meses < 24) {
-    var diasExtras = dias - (meses * 30);
     textoIdade = meses + (meses === 1 ? ' mês' : ' meses');
-    textoLabel = 'de vida';
   } else {
     var anos = Math.floor(meses / 12);
     var mesesRest = meses % 12;
     textoIdade = anos + (anos === 1 ? ' ano' : ' anos') + (mesesRest > 0 ? ' e ' + mesesRest + (mesesRest === 1 ? ' mês' : ' meses') : '');
-    textoLabel = 'de vida';
   }
 
-  // cobertura (cover stat)
   var elCover = document.getElementById('idade-cover');
   var elLabelCover = document.getElementById('idade-label-cover');
   if (elCover) elCover.textContent = textoIdade;
-  if (elLabelCover) elLabelCover.textContent = textoLabel;
+  if (elLabelCover) elLabelCover.textContent = 'de vida';
 
-  // card de premissas
   var elCard = document.getElementById('idade-card');
   if (elCard) elCard.textContent = textoIdade;
 })();
+
+// ========== NAVEGAÇÃO ==========
+function showPage(pageId) {
+  // Esconde todas as páginas
+  document.querySelectorAll('.page').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  // Remove active dos botões
+  document.querySelectorAll('.nav-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  // Mostra a página correta
+  document.getElementById('page-' + pageId).classList.add('active');
+  // Ativa o botão correto
+  var btns = document.querySelectorAll('.nav-btn');
+  btns.forEach(function(b) {
+    if (b.getAttribute('onclick').indexOf("'" + pageId + "'") !== -1) {
+      b.classList.add('active');
+    }
+  });
+  // Scroll para o topo
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 </script>
 </body>
 </html>
