@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plano Organizacional — Lucas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #042C53;
+    --blue-deep: #0C447C;
+    --blue-mid: #185FA5;
+    --blue: #378ADD;
+    --blue-light: #85B7EB;
+    --blue-pale: #B5D4F4;
+    --blue-ghost: #E6F1FB;
+    --teal: #1D9E75;
+    --teal-light: #E1F5EE;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --green: #3B6D11;
+    --green-light: #EAF3DE;
+    --gray-dark: #2C2C2A;
+    --gray: #5F5E5A;
+    --gray-light: #D3D1C7;
+    --gray-ghost: #F1EFE8;
+    --white: #ffffff;
+    --text: #042C53;
+    --body: #185FA5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blue-ghost);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .cover {
+    background: linear-gradient(160deg, var(--navy) 0%, var(--blue-deep) 50%, var(--blue-mid) 100%);
+    color: white;
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 40px solid rgba(255,255,255,0.05);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 24px solid rgba(255,255,255,0.04);
+  }
+
+  .cover-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--blue-pale);
+    margin-bottom: 16px;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 12px;
+    position: relative;
+  }
+
+  .cover-sub {
+    font-size: 15px;
+    color: var(--blue-pale);
+    font-weight: 300;
+    max-width: 480px;
+    margin-bottom: 32px;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .cstat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .cstat-val {
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+  }
+
+  .cstat-label {
+    font-size: 11px;
+    color: var(--blue-pale);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .print-btn {
+    position: absolute;
+    top: 32px; right: 48px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .print-btn:hover { background: rgba(255,255,255,0.22); }
+  .print-btn svg { width: 15px; height: 15px; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 32px 64px;
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  .section-num {
+    font-size: 11px;
+    color: var(--blue);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 80px 24px 1fr;
+    gap: 0 12px;
+    align-items: start;
+  }
+
+  .tl-time {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--blue-deep);
+    text-align: right;
+    padding-top: 14px;
+    letter-spacing: 0.5px;
+  }
+
+  .tl-spine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tl-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--blue-mid);
+    background: white;
+    margin-top: 16px;
+    flex-shrink: 0;
+  }
+
+  .tl-dot.filled { background: var(--blue-mid); }
+  .tl-dot.priority { border-color: var(--teal); background: var(--teal); }
+  .tl-dot.sacred { border-color: var(--amber); background: var(--amber); }
+
+  .tl-line {
+    width: 2px;
+    flex: 1;
+    min-height: 16px;
+    background: var(--blue-ghost);
+  }
+
+  .tl-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(55, 138, 221, 0.12);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .tl-card.highlight {
+    border-color: rgba(29, 158, 117, 0.25);
+    background: var(--teal-light);
+  }
+
+  .tl-card.sacred-card {
+    border-color: rgba(186, 117, 23, 0.25);
+    background: var(--amber-light);
+  }
+
+  .tl-card.study {
+    border-left: 3px solid var(--blue-mid);
+  }
+
+  .tl-card.rest {
+    border-left: 3px solid var(--blue-light);
+  }
+
+  .tl-card-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+
+  .tl-card-desc {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.5;
+  }
+
+  .tl-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 6px;
+  }
+
+  .badge-blue { background: var(--blue-ghost); color: var(--blue-deep); }
+  .badge-teal { background: var(--teal-light); color: var(--teal); }
+  .badge-amber { background: var(--amber-light); color: var(--amber); }
+  .badge-green { background: var(--green-light); color: var(--green); }
+  .badge-gray { background: var(--gray-ghost); color: var(--gray); }
+
+  /* CARDS GRID */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .info-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(55, 138, 221, 0.12);
+    padding: 18px;
+  }
+
+  .info-card-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+
+  .info-card-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+
+  .info-card-body {
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* TABLE */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(55, 138, 221, 0.12);
+  }
+
+  .data-table th {
+    background: var(--navy);
+    color: var(--blue-pale);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .data-table td {
+    padding: 11px 16px;
+    font-size: 13px;
+    color: var(--gray-dark);
+    border-bottom: 1px solid rgba(55, 138, 221, 0.07);
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--blue-ghost); }
+
+  .data-table td:first-child { font-weight: 600; color: var(--navy); }
+
+  /* GOAL BOX */
+  .goal-box {
+    background: var(--navy);
+    border-radius: 14px;
+    padding: 28px 32px;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 14px;
+  }
+
+  .goal-item-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-pale);
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+
+  .goal-item-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: white;
+    line-height: 1.3;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid rgba(55, 138, 221, 0.15);
+    margin: 36px 0;
+  }
+
+  /* WEEK GRID */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+  }
+
+  .day-card {
+    background: white;
+    border-radius: 10px;
+    border: 1px solid rgba(55, 138, 221, 0.12);
+    padding: 14px 12px;
+  }
+
+  .day-name {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--blue-mid);
+    margin-bottom: 10px;
+  }
+
+  .day-pill {
+    display: block;
+    font-size: 11px;
+    background: var(--blue-ghost);
+    color: var(--blue-deep);
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .day-pill.green { background: var(--green-light); color: var(--green); }
+  .day-pill.teal { background: var(--teal-light); color: var(--teal); }
+  .day-pill.amber { background: var(--amber-light); color: var(--amber); }
+
+  /* PROGRESS BARS */
+  .progress-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .prog-item {}
+  .prog-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .prog-label { font-size: 13px; font-weight: 600; color: var(--navy); }
+  .prog-pct { font-size: 12px; color: var(--blue); font-weight: 600; }
+  .prog-bar-bg {
+    background: var(--blue-ghost);
+    border-radius: 100px;
+    height: 7px;
+    overflow: hidden;
+  }
+  .prog-bar-fill {
+    height: 100%;
+    border-radius: 100px;
+    background: var(--blue-mid);
+    transition: width 0.3s;
+  }
+  .prog-bar-fill.teal { background: var(--teal); }
+  .prog-bar-fill.amber { background: var(--amber); }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--blue-light);
+    padding: 24px;
+    border-top: 1px solid rgba(55,138,221,0.12);
+    background: white;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .cover { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .print-btn { display: none !important; }
+    .goal-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .data-table th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tl-card.highlight, .tl-card.sacred-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .tl-badge, .badge-blue, .badge-teal, .badge-amber, .badge-green, .badge-gray {
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+    .day-pill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .prog-bar-fill { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .section { page-break-inside: avoid; }
+    .container { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <button class="print-btn" onclick="window.print()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Gerar PDF / Imprimir
+  </button>
+
+  <div class="cover-eyebrow">Plano Organizacional Pessoal</div>
+  <h1>Rotina de Alta<br>Performance</h1>
+  <p class="cover-sub">Construída para equilibrar concurso público, paternidade presente, saúde e espiritualidade — com foco e intenção em cada hora do dia.</p>
+
+  <div class="cover-stats">
+    <div class="cstat">
+      <span class="cstat-val">5 anos</span>
+      <span class="cstat-label">Meta concurso</span>
+    </div>
+    <div class="cstat">
+      <span class="cstat-val">-9 kg</span>
+      <span class="cstat-label">Meta de peso</span>
+    </div>
+    <div class="cstat">
+      <span class="cstat-val" id="idade-cover">—</span>
+      <span class="cstat-label" id="idade-label-cover">Idade do filho</span>
+    </div>
+    <div class="cstat">
+      <span class="cstat-val">~6h/dia</span>
+      <span class="cstat-label">Horas livres (útil)</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PREMISSAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">📌</div>
+      <div>
+        <div class="section-num">01 — Contexto</div>
+        <div class="section-title">Premissas da sua rotina</div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="info-card-icon">⏰</div>
+        <div class="info-card-title">Horários fixos</div>
+        <div class="info-card-body">Acorda 05h00 · Trabalho 07h–13h · Dorme 21h00 · Total: 16h acordado/dia</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🚗</div>
+        <div class="info-card-title">Deslocamento</div>
+        <div class="info-card-body">40 min ida + 40 min volta = 1h20/dia de transporte (seg–sex)</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🍼</div>
+        <div class="info-card-title">Bebê (<span id="idade-card">—</span>)</div>
+        <div class="info-card-body">Mamada a cada 2h30 — ritmo intenso, noites podem ser fragmentadas</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📚</div>
+        <div class="info-card-title">Cursos ativos</div>
+        <div class="info-card-body">2 cursos de 3 meses já iniciados. Integrados ao bloco de estudos diários</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- AGENDA DIÁRIA -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">🕐</div>
+      <div>
+        <div class="section-num">02 — Segunda a Sexta</div>
+        <div class="section-title">Rotina diária detalhada</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-time">05:00</div>
+        <div class="tl-spine"><div class="tl-dot sacred"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card sacred-card">
+            <div class="tl-card-title">🙏 Momento com Deus</div>
+            <div class="tl-card-desc">15 min de oração, leitura bíblica ou reflexão. Dia começa com intenção e gratidão antes de qualquer outra coisa.</div>
+            <span class="tl-badge badge-amber">Sagrado · 15 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">05:15</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-title">🏃 Preparação + Higiene + Café</div>
+            <div class="tl-card-desc">Banho, café da manhã rápido e nutritivo (foco em proteína para treino). Preparo para o trabalho. Pode aproveitar para checar algum flashcard de concurso.</div>
+            <span class="tl-badge badge-gray">30 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">05:45</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card study">
+            <div class="tl-card-title">📖 Estudo no trajeto (ida)</div>
+            <div class="tl-card-desc">40 min usando áudio, podcast do concurso, resumos gravados ou flashcards. Transporte vira sala de aula. Aproveite esse tempo 100%.</div>
+            <span class="tl-badge badge-blue">Concurso · 40 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">07:00</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-title">💼 Trabalho</div>
+            <div class="tl-card-desc">Foco total no trabalho. Entrega com qualidade, sem distrações. Não misture estudo de concurso com hora de trabalho — respeite cada espaço.</div>
+            <span class="tl-badge badge-gray">6h — até 13:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card study">
+            <div class="tl-card-title">📖 Estudo no trajeto (volta)</div>
+            <div class="tl-card-desc">Mais 40 min de material do concurso. Total de 1h20 de estudo no transporte por dia = quase 9h semanais apenas no deslocamento!</div>
+            <span class="tl-badge badge-blue">Concurso · 40 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">13:40</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-title">🍽 Almoço + Descanso curto</div>
+            <div class="tl-card-desc">Almoço balanceado (proteínas, vegetais, carboidrato moderado). 10 min de descanso visual/mental após comer. Não pule refeições — afeta energia e foco.</div>
+            <span class="tl-badge badge-gray">40 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">14:20</div>
+        <div class="tl-spine"><div class="tl-dot priority"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card highlight">
+            <div class="tl-card-title">👶 Tempo de qualidade com o filho</div>
+            <div class="tl-card-desc">Momento insubstituível. Interação, contato visual, leitura bíblica em voz alta, exercícios de desenvolvimento (QI/QE/coordenação). Sua presença agora forma o cérebro dele.</div>
+            <span class="tl-badge badge-teal">Prioridade máxima · 50 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">15:10</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card study">
+            <div class="tl-card-title">📚 Bloco de estudo — Concurso</div>
+            <div class="tl-card-desc">Estudo concentrado com técnica Pomodoro (25 min estudo + 5 min pausa). Foco em matérias do edital, cursos ativos, resolução de questões e revisão. Celular no silencioso.</div>
+            <span class="tl-badge badge-blue">Concurso · 1h30</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">16:40</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-title">💪 Treino físico — Abdômen + Jiu-jitsu</div>
+            <div class="tl-card-desc">Treino em casa focado em core e técnicas de jiu-jitsu. Inclui aquecimento, circuito abdominal, drills técnicos e alongamento. Consistência aqui = 65 kg em até 12 meses.</div>
+            <span class="tl-badge badge-green">Fitness · 40 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">17:20</div>
+        <div class="tl-spine"><div class="tl-dot priority"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card highlight">
+            <div class="tl-card-title">👶 Segundo bloco com o filho + esposa</div>
+            <div class="tl-card-desc">Apoio à esposa, troca, banho do bebê (se horário), leitura e estimulação. Momento de família. Essencial para o vínculo e para aliviar a carga da mãe que está em recuperação.</div>
+            <span class="tl-badge badge-teal">Família · 50 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">18:10</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card study">
+            <div class="tl-card-title">📚 Bloco 2 de estudo — Cursos ativos</div>
+            <div class="tl-card-desc">Foco nos dois cursos de 3 meses já em andamento. Aulas, exercícios, anotações. Dividir o tempo entre os dois cursos conforme a urgência das entregas.</div>
+            <span class="tl-badge badge-blue">Cursos · 1h</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">19:10</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card">
+            <div class="tl-card-title">🍽 Jantar + Conversa com a esposa</div>
+            <div class="tl-card-desc">Jantar leve (evitar pesado à noite para qualidade de sono e perda de peso). Momento de conexão com a esposa. Pergunta como ela está — ela também precisa de suporte.</div>
+            <span class="tl-badge badge-gray">40 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">19:50</div>
+        <div class="tl-spine"><div class="tl-dot sacred"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card sacred-card">
+            <div class="tl-card-title">📖 Leitura bíblica em família</div>
+            <div class="tl-card-desc">Ler a Bíblia em voz alta para o bebê e a esposa. Voz do pai tem poder de vínculo nos primeiros meses. Um hábito que vai durar a vida toda.</div>
+            <span class="tl-badge badge-amber">Espiritual · 15 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">20:05</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div><div class="tl-line"></div></div>
+        <div>
+          <div class="tl-card rest">
+            <div class="tl-card-title">🌙 Descompressão + Preparo para dormir</div>
+            <div class="tl-card-desc">Sem telas após 20h. Higiene, revisar lista do dia seguinte (5 min), exercício de respiração ou gratidão. Preparar ambiente para sono de qualidade.</div>
+            <span class="tl-badge badge-gray">55 min</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">21:00</div>
+        <div class="tl-spine"><div class="tl-dot filled"></div></div>
+        <div>
+          <div class="tl-card rest">
+            <div class="tl-card-title">😴 Dormir</div>
+            <div class="tl-card-desc">8h de sono programado. Com o bebê acordando à noite para mamar, preserve ao máximo a qualidade. A recuperação é quando o cérebro consolida o que estudou.</div>
+            <span class="tl-badge badge-gray">Meta: 8h</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- VARIAÇÃO SEMANAL -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">📅</div>
+      <div>
+        <div class="section-num">03 — Semana</div>
+        <div class="section-title">Variação do treino físico por dia</div>
+      </div>
+    </div>
+    <div class="week-grid">
+      <div class="day-card">
+        <div class="day-name">SEG</div>
+        <span class="day-pill">Core A</span>
+        <span class="day-pill teal">Jiu: Postura base</span>
+        <span class="day-pill amber">Alongamento</span>
+      </div>
+      <div class="day-card">
+        <div class="day-name">TER</div>
+        <span class="day-pill">Core B</span>
+        <span class="day-pill teal">Jiu: Quedas</span>
+        <span class="day-pill green">Cardio leve 15min</span>
+      </div>
+      <div class="day-card">
+        <div class="day-name">QUA</div>
+        <span class="day-pill">Abdômen intenso</span>
+        <span class="day-pill teal">Jiu: Guard/Sweep</span>
+        <span class="day-pill amber">Mobilidade</span>
+      </div>
+      <div class="day-card">
+        <div class="day-name">QUI</div>
+        <span class="day-pill">Core C (oblíquos)</span>
+        <span class="day-pill teal">Jiu: Finalização</span>
+        <span class="day-pill green">Cardio leve 15min</span>
+      </div>
+      <div class="day-card">
+        <div class="day-name">SEX</div>
+        <span class="day-pill">Circuito completo</span>
+        <span class="day-pill teal">Jiu: Livre</span>
+        <span class="day-pill amber">Revisão semana</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- FIM DE SEMANA -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">🏡</div>
+      <div>
+        <div class="section-num">04 — Sábado e Domingo</div>
+        <div class="section-title">Rotina do fim de semana</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+      <div class="info-card">
+        <div class="info-card-title">🗓 Sábado</div>
+        <div class="info-card-body" style="margin-top:8px; line-height:1.8;">
+          <strong>Manhã:</strong> Família + estudo (2h30 concurso sem pressa)<br>
+          <strong>Tarde:</strong> Família, passeio leve com bebê (sol é importante p/ vitamina D)<br>
+          <strong>Noite:</strong> Revisão da semana, planejamento da próxima<br>
+          <strong>Treino:</strong> Leve ou descanso ativo
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">☁️ Domingo</div>
+        <div class="info-card-body" style="margin-top:8px; line-height:1.8;">
+          <strong>Manhã:</strong> Igreja/culto + família<br>
+          <strong>Tarde:</strong> Descanso real — recarregue para a semana<br>
+          <strong>Noite:</strong> Organizar materiais, revisar metas, check-in emocional com esposa<br>
+          <strong>Treino:</strong> Descanso total
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ESTIMULAÇÃO DO FILHO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--teal-light);">🧠</div>
+      <div>
+        <div class="section-num">05 — Desenvolvimento</div>
+        <div class="section-title">Estimulação do bebê por fase</div>
+      </div>
+    </div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Fase</th>
+          <th>Exercícios QI/QE/Motor</th>
+          <th>Como o pai faz</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0–3 meses (agora)</td>
+          <td>Contato visual, voz do pai, seguir luz/objeto, tato suave</td>
+          <td>Fale sempre, leia em voz alta, segure o rostopertinho, música calma</td>
+        </tr>
+        <tr>
+          <td>3–6 meses</td>
+          <td>Tummy time, alcançar brinquedos, reconhecer voz, sorrir/rir</td>
+          <td>Deitar de bruços com suporte, oferecer objetos coloridos, responder aos sons</td>
+        </tr>
+        <tr>
+          <td>6–9 meses</td>
+          <td>Sentar com apoio, transferir objetos, imitar sons, causa/efeito</td>
+          <td>Brincadeiras de pegar, bater palma, música com movimentos, esconderijo</td>
+        </tr>
+        <tr>
+          <td>9–12 meses</td>
+          <td>Engatinhar, pé/mão, "mamã/papá", apontar, pinça</td>
+          <td>Incentive engatinhar, leia livros de pano, brinque de esconde-achou</td>
+        </tr>
+        <tr>
+          <td>1–2 anos</td>
+          <td>Andar, vocabulário, jogos de encaixe, sequência, empatia</td>
+          <td>Nomeie emoções, jogo de empilhar, contação de histórias, música rítmica</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- METAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">🎯</div>
+      <div>
+        <div class="section-num">06 — Metas</div>
+        <div class="section-title">Objetivos e indicadores</div>
+      </div>
+    </div>
+
+    <div class="goal-box">
+      <div>
+        <div class="goal-item-title">Meta principal</div>
+        <div class="goal-item-val">Aprovação no concurso público em até 5 anos</div>
+      </div>
+      <div>
+        <div class="goal-item-title">Meta física</div>
+        <div class="goal-item-val">74 kg → 65 kg com foco em abdômen e jiu-jitsu</div>
+      </div>
+      <div>
+        <div class="goal-item-title">Meta espiritual</div>
+        <div class="goal-item-val">15 min diários com Deus + leitura bíblica em família toda noite</div>
+      </div>
+      <div>
+        <div class="goal-item-title">Meta familiar</div>
+        <div class="goal-item-val">Estar presente nos momentos de desenvolvimento do filho todos os dias</div>
+      </div>
+    </div>
+
+    <div class="progress-list">
+      <div class="prog-item">
+        <div class="prog-header">
+          <span class="prog-label">Horas de estudo semanais (meta: 20h)</span>
+          <span class="prog-pct">Início</span>
+        </div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:15%"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-header">
+          <span class="prog-label">Frequência de treino (meta: 5x/semana)</span>
+          <span class="prog-pct">Início</span>
+        </div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill teal" style="width:10%"></div></div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-header">
+          <span class="prog-label">Meta de peso (74 kg → 65 kg)</span>
+          <span class="prog-pct">0%</span>
+        </div>
+        <div class="prog-bar-bg"><div class="prog-bar-fill amber" style="width:5%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- DICAS CRUCIAIS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--blue-ghost);">⚡</div>
+      <div>
+        <div class="section-num">07 — Avisos importantes</div>
+        <div class="section-title">Regras de ouro da rotina</div>
+      </div>
+    </div>
+
+    <div class="cards-grid">
+      <div class="info-card">
+        <div class="info-card-icon">🍼</div>
+        <div class="info-card-title">Noites com bebê</div>
+        <div class="info-card-body">Com mamadas a cada 2h30, as noites serão fragmentadas por meses. Negocie revezamento com a esposa. Se possível, durma quando ele dormir. Não force estudo exausto — é improdutivo.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">🔁</div>
+        <div class="info-card-title">Flexibilidade é essencial</div>
+        <div class="info-card-body">Bebê vai desregular tudo às vezes. Tenha um plano B: estudo de 30 min vale mais que zero. Se perdeu o treino, faça 10 min de abdominal. Não abandone a rotina, adapte.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">💙</div>
+        <div class="info-card-title">Cuide da esposa também</div>
+        <div class="info-card-body">Ela está no pós-parto. Verificar como ela está não é opcional — é parte do seu papel. Uma família equilibrada te dá mais energia para estudar e treinar.</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-icon">📵</div>
+        <div class="info-card-title">Sem telas após 20h</div>
+        <div class="info-card-body">Celular/tela após as 20h prejudica o sono. Com 8h de sono a cada noite e bebê acordando, cada minuto de qualidade conta. Modo avião às 20h05.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Plano gerado com foco em equilíbrio real — concurso, filho, saúde e fé. Revise mensalmente conforme o bebê cresce.
+</div>
+
+<script>
+(function() {
+  var nasc = new Date(2026, 3, 21); // 21 de abril de 2026 (mês 0-indexed)
+  var hoje = new Date();
+  var diffMs = hoje - nasc;
+  var dias = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  var semanas = Math.floor(dias / 7);
+  var meses = hoje.getMonth() - nasc.getMonth() + (12 * (hoje.getFullYear() - nasc.getFullYear()));
+  if (hoje.getDate() < nasc.getDate()) meses--;
+
+  var textoIdade = '';
+  var textoLabel = '';
+
+  if (dias < 30) {
+    textoIdade = dias + (dias === 1 ? ' dia' : ' dias');
+    textoLabel = 'de vida';
+  } else if (meses < 3) {
+    textoIdade = semanas + (semanas === 1 ? ' semana' : ' semanas');
+    textoLabel = 'de vida';
+  } else if (meses < 24) {
+    var diasExtras = dias - (meses * 30);
+    textoIdade = meses + (meses === 1 ? ' mês' : ' meses');
+    textoLabel = 'de vida';
+  } else {
+    var anos = Math.floor(meses / 12);
+    var mesesRest = meses % 12;
+    textoIdade = anos + (anos === 1 ? ' ano' : ' anos') + (mesesRest > 0 ? ' e ' + mesesRest + (mesesRest === 1 ? ' mês' : ' meses') : '');
+    textoLabel = 'de vida';
+  }
+
+  // cobertura (cover stat)
+  var elCover = document.getElementById('idade-cover');
+  var elLabelCover = document.getElementById('idade-label-cover');
+  if (elCover) elCover.textContent = textoIdade;
+  if (elLabelCover) elLabelCover.textContent = textoLabel;
+
+  // card de premissas
+  var elCard = document.getElementById('idade-card');
+  if (elCard) elCard.textContent = textoIdade;
+})();
+</script>
+</body>
+</html>
